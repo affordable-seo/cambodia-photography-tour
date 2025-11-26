@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <link rel="canonical" href="https://cambodia-photography-tour.vercel.app/">
-<link rel="icon" href="/images/favicon.png" type="images/png">
+    <link rel="icon" href="/images/favicon.png" type="images/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cambodia Photography Tour 2026 - 12-Day Expedition with Laurent Dambies | Capture Ancient Wonders, people and culture of Cambodia</title>
+    <title>Cambodia Photography Tour 2026 - 12-Day Expedition with Laurent Dambies | Capture Ancient Wonders, people and culture of Cambodia</title>
     <meta name="description" content="Join an exclusive 12-day photography tour with Laurent Dambies through Cambodia's most spectacular locations. From Angkor Wat to vibrant markets, capture the soul of this magnificent kingdom with a pro photographer expert guidance" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Base Styles & Variables */
         :root {
@@ -101,7 +101,10 @@
         
         /* Hero Section */
         .hero {
-            height: 100vh;
+            /* Updated for Mobile Viewport Fix */
+            min-height: 100vh; 
+            min-height: 100dvh; 
+            
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('images/cambodia_photo_tour_bayon_temple.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
@@ -130,28 +133,69 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
+        /* --- UPDATED HERO SUBTITLE FOR VISIBILITY --- */
         .hero-subtitle {
             font-size: 1.2rem;
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
-        
+
         .hero-subtitle span {
             display: flex;
             align-items: center;
+            background: rgba(0, 0, 0, 0.4); /* Dark, semi-transparent background for contrast */
+            color: white; 
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 600; /* Bolder text */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); 
+            line-height: 1.2;
         }
-        
+
         .hero-subtitle i {
             margin-right: 8px;
-            color: var(--light-accent);
+            color: var(--light-accent); 
         }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll Indicator Styles (NEW) */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%); 
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            animation: bounce 2s infinite; 
+            z-index: 10;
+        }
+        
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+        
+        /* The Bouncing Animation (NEW) */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
         
         /* About Section */
@@ -457,11 +501,6 @@
                 font-size: 2.5rem;
             }
             
-            .hero-subtitle {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
             .hero-content {
                 padding: 30px 20px;
             }
@@ -487,7 +526,16 @@
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 500px) {
+            /* Stacking the subtitle spans vertically on small screens */
+            .hero-subtitle {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero-subtitle span {
+                justify-content: center;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -508,20 +556,28 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Cambodia Photo Tours 2026</h1>
             <div class="hero-subtitle">
-                <span><i class="fas fa-calendar-days"></i> 12 Days • 13-24 March 2026 & 17-28 August 2026</span>
+                <span>
+                    <i class="fas fa-calendar-days"></i> 
+                    12 Days
+                </span>
+                <span>
+                    <i class="fas fa-calendar-days"></i> 
+                    13-24 March 2026 & 17-28 August 2026 & 1-12 November 2026
+                </span>
                 <span><i class="fas fa-map-marker-alt"></i> 6 Destinations</span>
                 <span><i class="fas fa-users"></i> Max 4 Photographers</span>
             </div>
             <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn">Book Your Tour</a>
         </div>
+        <a href="#about" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title"><strong>Capture Cambodia Through Your Lens</strong></h2>
@@ -547,7 +603,6 @@
         </div>
     </section>
 
-    <!-- Slideshow Section -->
     <section class="slideshow">
         <div class="container">
             <h2 class="section-title">Cambodia In Pictures</h2>
@@ -579,7 +634,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Ready to Capture Cambodia?</h2>
@@ -610,7 +664,6 @@
         </div>
     </section>
 
-    <!-- Icons Section -->
     <section class="features">
         <div class="container">
             <h2 class="section-title">Why This Cambodia Photo Tour is Different</h2>
@@ -652,7 +705,6 @@
         </div>
     </section>
 
-    <!-- Map & Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Find Us</h2>
@@ -703,10 +755,9 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Angkor Photography Tours. All rights reserved.</p>
+            <p>© 2025 Angkor Photography Tours. All rights reserved.</p>
         </div>
     </footer>
 
@@ -715,6 +766,7 @@
         let slideIndex = 0;
         showSlides();
         
+        // This function handles the automatic advance and dot changes
         function showSlides() {
             let i;
             let slides = document.getElementsByClassName("mySlides");
@@ -732,14 +784,16 @@
                 dots[i].className = dots[i].className.replace(" active-dot", "");
             }
             
+            // Display the current slide and highlight the corresponding dot
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active-dot";
             
             setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
         
+        // Manual control for dots
         function currentSlide(n) {
-            slideIndex = n - 1;
+            slideIndex = n - 1; // Correct the index before running showSlides (which auto-increments)
             showSlides();
         }
         
@@ -751,8 +805,8 @@
                 featureItems.forEach(item => {
                     const position = item.getBoundingClientRect();
                     
-                    // Checking if the element is in viewport
-                    if(position.top < window.innerHeight && position.bottom >= 0) {
+                    // Checking if the element is in viewport (with a small buffer)
+                    if(position.top < (window.innerHeight - 100) && position.bottom >= 0) {
                         item.classList.add('visible');
                     }
                 });
@@ -768,6 +822,3 @@
 </body>
 
 </html>
-
-
-
