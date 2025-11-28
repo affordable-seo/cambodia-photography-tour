@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DXBN8BB85P"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DXBN8BB85P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -9,6 +9,7 @@
 
       gtag('config', 'G-DXBN8BB85P');
     </script>
+
     <link rel="canonical" href="https://cambodia-photography-tour.vercel.app/">
     <link rel="icon" href="/images/favicon.png" type="images/png">
     <meta charset="UTF-8">
@@ -133,6 +134,7 @@
             width: 90%;
             box-shadow: var(--shadow);
             animation: fadeIn 1.5s ease;
+            z-index: 10;
         }
         
         .hero h1 {
@@ -141,14 +143,14 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        /* --- UPDATED HERO SUBTITLE FOR VISIBILITY --- */
+        /* --- UPDATED HERO SUBTITLE FOR CLEAN, NORMAL DISPLAY --- */
         .hero-subtitle {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            display: flex;
+            display: flex; /* Use flex to arrange items horizontally */
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 15px; /* Spacing between the detail spans */
         }
 
         .hero-subtitle span {
@@ -173,7 +175,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scroll Indicator Styles (NEW) */
+        /* Scroll Indicator Styles */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -193,7 +195,7 @@
             opacity: 1;
         }
         
-        /* The Bouncing Animation (NEW) */
+        /* The Bouncing Animation */
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateX(-50%) translateY(0);
@@ -221,6 +223,47 @@
             font-weight: 600;
         }
         
+        /* --- Itinerary Section Styles --- */
+        .itinerary {
+            background: #fcfcfc;
+        }
+
+        .itinerary-content {
+            /* Keep centered layout for the single image */
+            display: flex;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- Image Reveal Container Styles --- */
+        .reveal-image-container {
+            /* Uses max-width for image scaling */
+            max-width: 800px;
+            margin: 20px auto 40px;
+            position: relative;
+            overflow: hidden; 
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            
+            /* Initial state: Hidden, slightly scaled down (The reveal effect) */
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 1.5s ease, opacity 1.5s ease;
+        }
+
+        .reveal-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Final state: Triggers the reveal animation */
+        .reveal-image-container.revealed {
+            transform: scale(1);
+            opacity: 1;
+        }
+
         /* Slideshow Section */
         .slideshow {
             background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
@@ -535,15 +578,6 @@
         }
         
         @media (max-width: 500px) {
-            /* Stacking the subtitle spans vertically on small screens */
-            .hero-subtitle {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .hero-subtitle span {
-                justify-content: center;
-            }
-            
             .hero h1 {
                 font-size: 2rem;
             }
@@ -560,6 +594,18 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            /* Ensure all subtitle items stack nicely on small screens */
+            .hero-subtitle {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-subtitle span {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -567,23 +613,45 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Cambodia Photo Tours 2026</h1>
+            
             <div class="hero-subtitle">
-                <span>
-                    <i class="fas fa-calendar-days"></i> 
-                    12 Days
-                </span>
                 <span>
                     <i class="fas fa-calendar-days"></i> 
                     13-24 March 2026 & 17-28 August 2026 & 1-12 November 2026
                 </span>
-                <span><i class="fas fa-map-marker-alt"></i> 6 Destinations</span>
-                <span><i class="fas fa-users"></i> Max 4 Photographers</span>
+                
+                <span>
+                    <i class="fas fa-sun"></i> 
+                    12 Days
+                </span>
+                <span>
+                    <i class="fas fa-map-marker-alt"></i> 
+                    6 Destinations
+                </span>
+                <span>
+                    <i class="fas fa-users"></i> 
+                    Max 4 Photographers
+                </span>
             </div>
+            
             <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn">Book Your Tour</a>
         </div>
-        <a href="#about" class="scroll-indicator">
+        
+        <a href="#itinerary" class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </a>
+    </section>
+
+    <section class="itinerary" id="itinerary">
+        <div class="container">
+            <h2 class="section-title">Itinerary: The 12-Day Expedition</h2>
+            
+            <div class="itinerary-content">
+                <div class="reveal-image-container">
+                    <img src="/images/itinerary.jpg" alt="Map of Cambodia Tour Itinerary" class="itinerary-map">
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="about" id="about">
@@ -805,11 +873,13 @@
             showSlides();
         }
         
-        // Scroll animation for feature items
+        // Scroll animation for feature items and itinerary image reveal
         document.addEventListener('DOMContentLoaded', function() {
             const featureItems = document.querySelectorAll('.feature-item');
+            const revealImage = document.querySelector('.reveal-image-container');
             
             function checkVisibility() {
+                // Logic for feature items (Fade-in on scroll)
                 featureItems.forEach(item => {
                     const position = item.getBoundingClientRect();
                     
@@ -818,6 +888,14 @@
                         item.classList.add('visible');
                     }
                 });
+                
+                // Logic for itinerary image reveal (Scale/Opacity reveal on scroll)
+                if (revealImage) {
+                    const imagePosition = revealImage.getBoundingClientRect();
+                    if(imagePosition.top < (window.innerHeight - 150) && imagePosition.bottom >= 0) {
+                        revealImage.classList.add('revealed');
+                    }
+                }
             }
             
             // Check on initial load
