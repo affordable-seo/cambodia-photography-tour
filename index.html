@@ -309,15 +309,29 @@
             overflow: hidden;
         }
 
+        /* Parchment map — full section background */
         .itinerary::before {
             content: '';
             position: absolute;
-            top: -80px; right: -80px;
-            width: 420px; height: 420px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--amber-glow) 0%, transparent 70%);
+            inset: 0;
+            background: url('/images/cambodia-photo-tour.webp') center/cover no-repeat;
+            opacity: 0.18;
             pointer-events: none;
+            z-index: 0;
         }
+
+        /* Subtle vignette so edges don't distract */
+        .itinerary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, var(--parchment) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .itinerary .container { position: relative; z-index: 1; }
 
         .itinerary .section-header { margin-bottom: 3rem; }
 
@@ -328,6 +342,7 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
+            z-index: 1;
         }
 
         .itinerary-map-wrap img {
@@ -342,14 +357,6 @@
         .itinerary-map-wrap img.revealed {
             opacity: 1;
             transform: scale(1);
-        }
-
-        .itinerary-watermark {
-            position: absolute;
-            inset: 0;
-            background: url('/images/cambodia-photo-tour.webp') center/contain no-repeat;
-            opacity: 0.07;
-            pointer-events: none;
         }
 
         /* ============================================================
@@ -986,7 +993,6 @@
             </div>
 
             <div class="itinerary-map-wrap" data-reveal style="transition-delay:.15s">
-                <div class="itinerary-watermark"></div>
                 <img src="/images/itinerary.webp" alt="Map of Cambodia Tour Itinerary" class="reveal-image-container">
             </div>
         </div>
@@ -1201,7 +1207,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Angkor Photography Tours. All rights reserved.</p>
+            <p>© 2026 Angkor Photography Tours. All rights reserved.</p>
         </div>
     </footer>
 
