@@ -583,6 +583,10 @@
 
         .about-sidebar { position: sticky; top: 100px; }
 
+        @media (max-width: 768px) {
+            .about-sidebar { position: static; }
+        }
+
         .about-content p { color: var(--ink-soft); font-size: 1rem; }
 
         .about-content h3 {
