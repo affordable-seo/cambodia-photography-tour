@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 1. Charset must be first to prevent re-parsing -->
+<!-- 1. Charset must be first to prevent re-parsing -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://cambodia-photography-workshop.pages.dev/">
-    <link rel="icon" href="/images/favicon.png" type="image/png">
-    <title>Cambodia Photography Workshop 2027 - 12-Day Expedition with Laurent Dambies | Capture Ancient Wonders, people and culture of Cambodia</title>
-    <meta name="description" content="Join an exclusive 12-day photography workshop in 2027 with Laurent Dambies through Cambodia's most spectacular locations. From Angkor Wat to vibrant markets, capture the soul of this magnificent kingdom with a pro photographer expert guidance" />
+<link rel="canonical" href="https://cambodia-photography-workshop.pages.dev/">
+<link rel="icon" href="/images/favicon.png" type="image/png">
+<title>Cambodia Photography Workshop 2027 - 12-Day Expedition with Laurent Dambies | Capture Ancient Wonders, people and culture of Cambodia
+</title>
+<meta name="description" content="Join an exclusive 12-day photography workshop in 2027 with Laurent Dambies through Cambodia's most spectacular locations. From Angkor Wat to vibrant markets, capture the soul of this magnificent kingdom with a pro photographer expert guidance" />
 
-    <!-- Google Tag Manager: deferred until first user interaction -->
+<!-- Google Tag Manager: deferred until first user interaction -->
 <script>
   let gtmLoaded = false;
   function loadGTM() {
     if (gtmLoaded) return;
     gtmLoaded = true;
     const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8G72DTHCVZ';
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DXBN8BB85P';
     script.async = true;
     document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-8G72DTHCVZ');
+    gtag('config', 'G-DXBN8BB85P');
     ['scroll', 'mousemove', 'touchstart'].forEach(e => window.removeEventListener(e, loadGTM));
   }
   ['scroll', 'mousemove', 'touchstart'].forEach(e => window.addEventListener(e, loadGTM, { once: true, passive: true }));
 </script>  
+    
+   
     <link rel="preload" href="/images/cambodia_photo_tour_bayon_temple.webp" as="image" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome: non-blocking async load -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Google Fonts: non-blocking async load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 
     <style>
         /* ============================================================
@@ -237,6 +245,14 @@
             margin-bottom: 1.4rem;
             opacity: 0;
             animation: fadeUp 0.9s var(--ease-expo) 0.2s forwards;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 7px 18px;
+            border-radius: var(--radius-pill);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(212, 169, 106, 0.3);
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
         }
 
         .hero h1 {
@@ -261,9 +277,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 2.4rem;
-            opacity: 0;
-            animation: fadeUp 0.9s var(--ease-expo) 0.6s forwards;
         }
 
         .hero-pill {
@@ -631,90 +644,291 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 70% 50% at 20% 50%, rgba(201,96,26,.22) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(212,169,106,.10) 0%, transparent 55%);
+                radial-gradient(ellipse 65% 55% at 15% 60%, rgba(201,96,26,.20) 0%, transparent 60%),
+                radial-gradient(ellipse 55% 55% at 85% 25%, rgba(212,169,106,.10) 0%, transparent 55%);
             pointer-events: none;
         }
 
-        .pricing-card {
+        /* header sits above the cards */
+        .pricing-header {
             position: relative;
             z-index: 1;
-            background: rgba(255,255,255,.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: var(--radius-lg);
-            padding: clamp(36px, 5vw, 64px);
-            max-width: 760px;
-            margin-inline: auto;
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .pricing-card .section-label { color: var(--gold); display: block; margin-bottom: 0.6rem; }
-        .pricing-card .section-title { color: var(--white); margin-bottom: 0.4rem; }
+        .pricing-header .section-label { color: var(--gold); display: block; margin-bottom: 0.6rem; }
+        .pricing-header .section-title { color: var(--white); margin-bottom: 1rem; }
 
         .spots-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(201,96,26,.25);
-            border: 1px solid rgba(201,96,26,.4);
+            background: rgba(201,96,26,.22);
+            border: 1px solid rgba(201,96,26,.40);
             color: var(--gold);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
             padding: 7px 18px;
             border-radius: var(--radius-pill);
-            margin-bottom: 2rem;
         }
 
-        .spots-badge i { font-size: 0.7rem; color: var(--amber-light); }
+        .spots-badge i { font-size: 0.68rem; color: var(--amber-light); }
 
-        .price-tag {
-            font-family: var(--font-display);
-            font-size: clamp(4rem, 10vw, 6.5rem);
+        /* ── two-card grid ── */
+        .pricing-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            max-width: 860px;
+            margin-inline: auto;
+        }
+
+        @media (max-width: 640px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+
+        .price-card {
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: var(--radius-lg);
+            padding: clamp(28px, 4vw, 48px) clamp(24px, 3.5vw, 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.35s var(--ease-expo), border-color 0.3s, box-shadow 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212,169,106,.35);
+            box-shadow: 0 24px 60px rgba(0,0,0,.35);
+        }
+
+        /* featured card — solo */
+        .price-card--featured {
+            border-color: rgba(201,96,26,.45);
+            background: rgba(201,96,26,.10);
+        }
+
+        .price-card--featured:hover {
+            border-color: rgba(201,96,26,.75);
+        }
+
+        /* glow behind featured card */
+        .price-card--featured::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(201,96,26,.18), transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .price-card > * { position: relative; z-index: 1; }
+
+        /* badge inside card */
+        .price-card-badge {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
             font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--amber);
+            padding: 5px 14px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 1.4rem;
+        }
+
+        .price-card-badge--group {
+            background: rgba(212,169,106,.20);
+            color: var(--gold);
+            border: 1px solid rgba(212,169,106,.30);
+        }
+
+        /* icon circle */
+        .price-card-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-card--featured .price-card-icon {
+            background: rgba(201,96,26,.25);
+            color: var(--amber-light);
+        }
+
+        .price-card--group .price-card-icon {
+            background: rgba(212,169,106,.12);
+            color: var(--gold);
+        }
+
+        .price-card-title {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-family: var(--font-display);
             line-height: 1;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .price-amount .currency {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 400;
+            vertical-align: super;
             background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.4rem;
         }
 
-        .price-sub {
-            color: rgba(255,255,255,.5);
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
+        .price-amount .figure {
+            font-size: clamp(3.2rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .price-features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 2.4rem;
+        .price-per {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,.40);
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.04em;
         }
 
-        .price-feature {
+        /* group size indicator */
+        .price-group-size {
             display: flex;
             align-items: center;
-            gap: 9px;
-            background: rgba(255,255,255,.07);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: var(--radius-pill);
-            padding: 9px 20px;
-            font-size: 0.86rem;
-            font-weight: 500;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 1.6rem;
         }
 
-        .price-feature i { color: var(--gold); }
+        .price-group-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(212,169,106,.15);
+            border: 1px solid rgba(212,169,106,.25);
+            display: grid;
+            place-items: center;
+            font-size: 0.65rem;
+            color: var(--gold);
+        }
 
+        .price-group-dot.filled {
+            background: rgba(212,169,106,.30);
+            border-color: rgba(212,169,106,.55);
+        }
+
+        /* includes list */
+        .price-includes {
+            list-style: none;
+            width: 100%;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .price-includes li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,.70);
+            text-align: left;
+        }
+
+        .price-includes li i {
+            color: var(--gold);
+            font-size: 0.72rem;
+            flex-shrink: 0;
+        }
+
+        /* savings pill on group card */
+        .price-saving {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(212,169,106,.12);
+            border: 1px solid rgba(212,169,106,.28);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 5px 13px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 1.6rem;
+        }
+
+        /* discount notice strip */
+        .pricing-discount-strip {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 22px auto 0;
+            background: rgba(212,169,106,.08);
+            border: 1px solid rgba(212,169,106,.20);
+            border-radius: var(--radius-md);
+            padding: 18px 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-discount-strip i {
+            font-size: 1.1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .pricing-discount-strip p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,.60);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .pricing-discount-strip strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* deposit note */
         .price-note {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,.45);
-            margin-top: 1.4rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,.35);
+            margin-top: 1.2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin-inline: auto;
         }
 
         /* ============================================================
@@ -1062,6 +1276,146 @@
         .instagram-link i {
             font-size: 1.1rem;
         }
+
+        /* ============================================================
+           HERO DATE TABS
+        ============================================================ */
+        .hero-dates {
+            margin-bottom: 1.8rem;
+            opacity: 0;
+            animation: fadeUp 0.9s var(--ease-expo) 0.6s forwards;
+        }
+
+        .hero-dates-label {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .hero-dates-label i { font-size: 0.75rem; }
+
+        /* ── Tab buttons ── */
+        .date-tabs {
+            display: inline-flex;
+            gap: 0;
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(212,169,106,0.30);
+            border-radius: var(--radius-pill);
+            padding: 4px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 1.1rem;
+        }
+
+        .date-tab {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            padding: 8px 28px;
+            border: none;
+            border-radius: var(--radius-pill);
+            background: transparent;
+            color: rgba(255,255,255,0.55);
+            cursor: pointer;
+            transition: background 0.3s var(--ease-expo), color 0.3s;
+        }
+
+        .date-tab.active {
+            background: var(--amber);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(201,96,26,0.45);
+        }
+
+        .date-tab:not(.active):hover {
+            color: var(--gold);
+        }
+
+        /* ── Panels ── */
+        .date-panels {
+            position: relative;
+        }
+
+        .date-panel {
+            display: none;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .date-panel.active {
+            display: flex;
+        }
+
+        /* ── Individual date card ── */
+        .date-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(212,169,106,0.25);
+            border-radius: var(--radius-md);
+            padding: 14px 22px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-width: 110px;
+            transition: border-color 0.25s, transform 0.25s var(--ease-back);
+        }
+
+        .date-card:hover {
+            border-color: rgba(212,169,106,0.6);
+            transform: translateY(-3px);
+        }
+
+        .date-card-month {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .date-card-range {
+            font-family: var(--font-display);
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .date-card-tag {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-top: 2px;
+        }
+
+        /* ── hero-meta: now only 2 pills, keep centred ── */
+        .hero-meta {
+            margin-bottom: 2.4rem;
+            opacity: 0;
+            animation: fadeUp 0.9s var(--ease-expo) 0.75s forwards;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 480px) {
+            .date-card { min-width: 90px; padding: 12px 14px; }
+            .date-card-range { font-size: 1.3rem; }
+            .date-tab { padding: 7px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -1075,12 +1429,54 @@
         <div class="hero-content">
             <p class="hero-eyebrow">An Exclusive Expedition · Limited to 4 Photographers</p>
 
-            <h1>Cambodia Photography Workshops <em>2026–2027</em></h1>
+            <h1>Cambodia Photo Workshops <em>2026–2027</em></h1>
 
+            <!-- ── Date Tabs ── -->
+            <div class="hero-dates" aria-label="Tour dates by year">
+                <p class="hero-dates-label"><i class="fas fa-calendar-days"></i> Available Tour Dates</p>
+
+                <div class="date-tabs" role="tablist">
+                    <button class="date-tab active" role="tab" aria-selected="true"  data-year="2026">2026</button>
+                    <button class="date-tab"        role="tab" aria-selected="false" data-year="2027">2027</button>
+                </div>
+
+                <div class="date-panels">
+                    <!-- 2026 -->
+                    <div class="date-panel active" data-year="2026" role="tabpanel">
+                        <div class="date-card">
+                            <span class="date-card-month">August</span>
+                            <span class="date-card-range">17 – 28</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">November</span>
+                            <span class="date-card-range">1 – 12</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                    </div>
+                    <!-- 2027 -->
+                    <div class="date-panel" data-year="2027" role="tabpanel">
+                        <div class="date-card">
+                            <span class="date-card-month">March</span>
+                            <span class="date-card-range">13 – 24</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">August</span>
+                            <span class="date-card-range">17 – 28</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">November</span>
+                            <span class="date-card-range">1 – 12</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Other meta pills ── -->
             <div class="hero-meta">
-                <span class="hero-pill"><i class="fas fa-calendar-days"></i> 13–24 March 2026 &amp; 17–28 August 2026 &amp; 1–12 November 2026</span>
-                <span class="hero-pill"><i class="fas fa-calendar-days"></i> 13–24 March 2027 &amp; 17–28 August 2027 &amp; 1–12 November 2027</span>
-                <span class="hero-pill"><i class="fas fa-sun"></i> 12 Days</span>
                 <span class="hero-pill"><i class="fas fa-map-marker-alt"></i> 6 Destinations</span>
                 <span class="hero-pill"><i class="fas fa-users"></i> Max 4 Photographers</span>
             </div>
@@ -1226,25 +1622,74 @@
     ============================================================ -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <div class="pricing-card" data-reveal>
+
+            <!-- Header -->
+            <div class="pricing-header" data-reveal>
                 <span class="section-label">Investment</span>
                 <h2 class="section-title">Ready to Capture Cambodia?</h2>
                 <div class="spots-badge">
                     <i class="fas fa-fire"></i>
-                    Only 4 spots available for this exclusive photography expedition.
+                    Only 4 spots per departure — book early to secure yours
                 </div>
-                <div class="price-tag">From $4,700</div>
-                <p class="price-sub">per photographer · all-inclusive</p>
-                <div class="price-features">
-                    <div class="price-feature"><i class="fas fa-check-circle"></i> All-inclusive</div>
-                    <div class="price-feature"><i class="fas fa-calendar"></i> 12 Days</div>
-                    <div class="price-feature"><i class="fas fa-map-marked-alt"></i> 6 Destinations</div>
-                </div>
-                <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn">
-                    <i class="fas fa-arrow-right"></i> Book Your Adventure Now
-                </a>
-                <p class="price-note">30% deposit secures your spot · Full refund if cancelled 3 months before departure</p>
             </div>
+
+            <!-- Two price cards -->
+            <div class="pricing-grid" data-reveal style="transition-delay:.1s">
+
+                <!-- Solo -->
+                <div class="price-card price-card--featured">
+                    <span class="price-card-badge">Solo Traveller</span>
+                    <div class="price-card-icon"><i class="fas fa-user"></i></div>
+                    <p class="price-card-title">Private Expedition</p>
+                    <div class="price-amount">
+                        <span class="currency">USD</span><span class="figure">5,500</span>
+                    </div>
+                    <p class="price-per">per photographer · all-inclusive</p>
+                    <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn" style="width:100%;justify-content:center;">
+                        <i class="fas fa-arrow-right"></i> Book Solo
+                    </a>
+                </div>
+
+                <!-- Small Group -->
+                <div class="price-card price-card--group">
+                    <span class="price-card-badge price-card-badge--group">Small Group</span>
+                    <div class="price-card-icon"><i class="fas fa-users"></i></div>
+                    <p class="price-card-title">2 – 4 Photographers</p>
+                    <div class="price-amount">
+                        <span class="currency">USD</span><span class="figure">4,700</span>
+                    </div>
+                    <p class="price-per">per photographer · all-inclusive</p>
+
+                    <!-- group size dots -->
+                    <div class="price-group-size" aria-label="2 to 4 people">
+                        <div class="price-group-dot filled"><i class="fas fa-user"></i></div>
+                        <div class="price-group-dot filled"><i class="fas fa-user"></i></div>
+                        <div class="price-group-dot"><i class="fas fa-user"></i></div>
+                        <div class="price-group-dot"><i class="fas fa-user"></i></div>
+                    </div>
+
+                    <span class="price-saving"><i class="fas fa-tag"></i> Save USD 800 vs. solo rate</span>
+
+                    <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn btn-ghost" style="width:100%;justify-content:center;border-color:rgba(212,169,106,.45);color:var(--gold);">
+                        <i class="fas fa-arrow-right"></i> Book as Group
+                    </a>
+                </div>
+
+            </div><!-- /pricing-grid -->
+
+            <!-- Discount notice -->
+            <div class="pricing-discount-strip" data-reveal style="transition-delay:.2s">
+                <i class="fas fa-gift"></i>
+                <p>
+                    <strong>Special discounts available</strong> for accompanying travellers (non-photographers)
+                    and for returning participants from previous photo tours. Contact us to learn more.
+                </p>
+            </div>
+
+            <p class="price-note" data-reveal style="transition-delay:.25s">
+                30% deposit secures your spot &nbsp;·&nbsp; Full refund if cancelled 3 months before departure
+            </p>
+
         </div>
     </section>
 
@@ -1433,6 +1878,26 @@
 
         createSlideshow('templesSlideshow', 'templesDots', 5000);
         createSlideshow('peopleSlideshow',  'peopleDots',  5000);
+
+        /* ─── Hero date tabs ─────────────────────────── */
+        const dateTabs   = document.querySelectorAll('.date-tab');
+        const datePanels = document.querySelectorAll('.date-panel');
+
+        dateTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const year = tab.dataset.year;
+
+                dateTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                datePanels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                document.querySelector(`.date-panel[data-year="${year}"]`).classList.add('active');
+            });
+        });
 
     })();
     </script>
