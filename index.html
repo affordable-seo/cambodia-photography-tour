@@ -643,90 +643,291 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 70% 50% at 20% 50%, rgba(201,96,26,.22) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(212,169,106,.10) 0%, transparent 55%);
+                radial-gradient(ellipse 65% 55% at 15% 60%, rgba(201,96,26,.20) 0%, transparent 60%),
+                radial-gradient(ellipse 55% 55% at 85% 25%, rgba(212,169,106,.10) 0%, transparent 55%);
             pointer-events: none;
         }
 
-        .pricing-card {
+        /* header sits above the cards */
+        .pricing-header {
             position: relative;
             z-index: 1;
-            background: rgba(255,255,255,.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: var(--radius-lg);
-            padding: clamp(36px, 5vw, 64px);
-            max-width: 760px;
-            margin-inline: auto;
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .pricing-card .section-label { color: var(--gold); display: block; margin-bottom: 0.6rem; }
-        .pricing-card .section-title { color: var(--white); margin-bottom: 0.4rem; }
+        .pricing-header .section-label { color: var(--gold); display: block; margin-bottom: 0.6rem; }
+        .pricing-header .section-title { color: var(--white); margin-bottom: 1rem; }
 
         .spots-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(201,96,26,.25);
-            border: 1px solid rgba(201,96,26,.4);
+            background: rgba(201,96,26,.22);
+            border: 1px solid rgba(201,96,26,.40);
             color: var(--gold);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
             padding: 7px 18px;
             border-radius: var(--radius-pill);
-            margin-bottom: 2rem;
         }
 
-        .spots-badge i { font-size: 0.7rem; color: var(--amber-light); }
+        .spots-badge i { font-size: 0.68rem; color: var(--amber-light); }
 
-        .price-tag {
-            font-family: var(--font-display);
-            font-size: clamp(4rem, 10vw, 6.5rem);
+        /* ── two-card grid ── */
+        .pricing-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            max-width: 860px;
+            margin-inline: auto;
+        }
+
+        @media (max-width: 640px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+
+        .price-card {
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: var(--radius-lg);
+            padding: clamp(28px, 4vw, 48px) clamp(24px, 3.5vw, 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.35s var(--ease-expo), border-color 0.3s, box-shadow 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212,169,106,.35);
+            box-shadow: 0 24px 60px rgba(0,0,0,.35);
+        }
+
+        /* featured card — solo */
+        .price-card--featured {
+            border-color: rgba(201,96,26,.45);
+            background: rgba(201,96,26,.10);
+        }
+
+        .price-card--featured:hover {
+            border-color: rgba(201,96,26,.75);
+        }
+
+        /* glow behind featured card */
+        .price-card--featured::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(201,96,26,.18), transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .price-card > * { position: relative; z-index: 1; }
+
+        /* badge inside card */
+        .price-card-badge {
+            font-family: var(--font-body);
+            font-size: 0.62rem;
             font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--amber);
+            padding: 5px 14px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 1.4rem;
+        }
+
+        .price-card-badge--group {
+            background: rgba(212,169,106,.20);
+            color: var(--gold);
+            border: 1px solid rgba(212,169,106,.30);
+        }
+
+        /* icon circle */
+        .price-card-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-card--featured .price-card-icon {
+            background: rgba(201,96,26,.25);
+            color: var(--amber-light);
+        }
+
+        .price-card--group .price-card-icon {
+            background: rgba(212,169,106,.12);
+            color: var(--gold);
+        }
+
+        .price-card-title {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.55);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-family: var(--font-display);
             line-height: 1;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .price-amount .currency {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 400;
+            vertical-align: super;
             background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.4rem;
         }
 
-        .price-sub {
-            color: rgba(255,255,255,.5);
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
+        .price-amount .figure {
+            font-size: clamp(3.2rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .price-features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 2.4rem;
+        .price-per {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,.40);
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.04em;
         }
 
-        .price-feature {
+        /* group size indicator */
+        .price-group-size {
             display: flex;
             align-items: center;
-            gap: 9px;
-            background: rgba(255,255,255,.07);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: var(--radius-pill);
-            padding: 9px 20px;
-            font-size: 0.86rem;
-            font-weight: 500;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 1.6rem;
         }
 
-        .price-feature i { color: var(--gold); }
+        .price-group-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(212,169,106,.15);
+            border: 1px solid rgba(212,169,106,.25);
+            display: grid;
+            place-items: center;
+            font-size: 0.65rem;
+            color: var(--gold);
+        }
 
+        .price-group-dot.filled {
+            background: rgba(212,169,106,.30);
+            border-color: rgba(212,169,106,.55);
+        }
+
+        /* includes list */
+        .price-includes {
+            list-style: none;
+            width: 100%;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .price-includes li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,.70);
+            text-align: left;
+        }
+
+        .price-includes li i {
+            color: var(--gold);
+            font-size: 0.72rem;
+            flex-shrink: 0;
+        }
+
+        /* savings pill on group card */
+        .price-saving {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(212,169,106,.12);
+            border: 1px solid rgba(212,169,106,.28);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 5px 13px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 1.6rem;
+        }
+
+        /* discount notice strip */
+        .pricing-discount-strip {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 22px auto 0;
+            background: rgba(212,169,106,.08);
+            border: 1px solid rgba(212,169,106,.20);
+            border-radius: var(--radius-md);
+            padding: 18px 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-discount-strip i {
+            font-size: 1.1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .pricing-discount-strip p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,.60);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .pricing-discount-strip strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* deposit note */
         .price-note {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,.45);
-            margin-top: 1.4rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,.35);
+            margin-top: 1.2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin-inline: auto;
         }
 
         /* ============================================================
@@ -1420,25 +1621,74 @@
     ============================================================ -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <div class="pricing-card" data-reveal>
+
+            <!-- Header -->
+            <div class="pricing-header" data-reveal>
                 <span class="section-label">Investment</span>
                 <h2 class="section-title">Ready to Capture Cambodia?</h2>
                 <div class="spots-badge">
                     <i class="fas fa-fire"></i>
-                    Only 4 spots available for this exclusive photography expedition.
+                    Only 4 spots per departure — book early to secure yours
                 </div>
-                <div class="price-tag">From $4,700</div>
-                <p class="price-sub">per photographer · all-inclusive</p>
-                <div class="price-features">
-                    <div class="price-feature"><i class="fas fa-check-circle"></i> All-inclusive</div>
-                    <div class="price-feature"><i class="fas fa-calendar"></i> 12 Days</div>
-                    <div class="price-feature"><i class="fas fa-map-marked-alt"></i> 6 Destinations</div>
-                </div>
-                <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn">
-                    <i class="fas fa-arrow-right"></i> Book Your Adventure Now
-                </a>
-                <p class="price-note">30% deposit secures your spot · Full refund if cancelled 3 months before departure</p>
             </div>
+
+            <!-- Two price cards -->
+            <div class="pricing-grid" data-reveal style="transition-delay:.1s">
+
+                <!-- Solo -->
+                <div class="price-card price-card--featured">
+                    <span class="price-card-badge">Solo Traveller</span>
+                    <div class="price-card-icon"><i class="fas fa-user"></i></div>
+                    <p class="price-card-title">Private Expedition</p>
+                    <div class="price-amount">
+                        <span class="currency">USD</span><span class="figure">5,500</span>
+                    </div>
+                    <p class="price-per">per photographer · all-inclusive</p>
+                    <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn" style="width:100%;justify-content:center;">
+                        <i class="fas fa-arrow-right"></i> Book Solo
+                    </a>
+                </div>
+
+                <!-- Small Group -->
+                <div class="price-card price-card--group">
+                    <span class="price-card-badge price-card-badge--group">Small Group</span>
+                    <div class="price-card-icon"><i class="fas fa-users"></i></div>
+                    <p class="price-card-title">2 – 4 Photographers</p>
+                    <div class="price-amount">
+                        <span class="currency">USD</span><span class="figure">4,700</span>
+                    </div>
+                    <p class="price-per">per photographer · all-inclusive</p>
+
+                    <!-- group size dots -->
+                    <div class="price-group-size" aria-label="2 to 4 people">
+                        <div class="price-group-dot filled"><i class="fas fa-user"></i></div>
+                        <div class="price-group-dot filled"><i class="fas fa-user"></i></div>
+                        <div class="price-group-dot"><i class="fas fa-user"></i></div>
+                        <div class="price-group-dot"><i class="fas fa-user"></i></div>
+                    </div>
+
+                    <span class="price-saving"><i class="fas fa-tag"></i> Save USD 800 vs. solo rate</span>
+
+                    <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn btn-ghost" style="width:100%;justify-content:center;border-color:rgba(212,169,106,.45);color:var(--gold);">
+                        <i class="fas fa-arrow-right"></i> Book as Group
+                    </a>
+                </div>
+
+            </div><!-- /pricing-grid -->
+
+            <!-- Discount notice -->
+            <div class="pricing-discount-strip" data-reveal style="transition-delay:.2s">
+                <i class="fas fa-gift"></i>
+                <p>
+                    <strong>Special discounts available</strong> for accompanying travellers (non-photographers)
+                    and for returning participants from previous photo tours. Contact us to learn more.
+                </p>
+            </div>
+
+            <p class="price-note" data-reveal style="transition-delay:.25s">
+                30% deposit secures your spot &nbsp;·&nbsp; Full refund if cancelled 3 months before departure
+            </p>
+
         </div>
     </section>
 
