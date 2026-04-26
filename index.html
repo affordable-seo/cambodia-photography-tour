@@ -276,9 +276,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 2.4rem;
-            opacity: 0;
-            animation: fadeUp 0.9s var(--ease-expo) 0.6s forwards;
         }
 
         .hero-pill {
@@ -1077,6 +1074,146 @@
         .instagram-link i {
             font-size: 1.1rem;
         }
+
+        /* ============================================================
+           HERO DATE TABS
+        ============================================================ */
+        .hero-dates {
+            margin-bottom: 1.8rem;
+            opacity: 0;
+            animation: fadeUp 0.9s var(--ease-expo) 0.6s forwards;
+        }
+
+        .hero-dates-label {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .hero-dates-label i { font-size: 0.75rem; }
+
+        /* ── Tab buttons ── */
+        .date-tabs {
+            display: inline-flex;
+            gap: 0;
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(212,169,106,0.30);
+            border-radius: var(--radius-pill);
+            padding: 4px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 1.1rem;
+        }
+
+        .date-tab {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            padding: 8px 28px;
+            border: none;
+            border-radius: var(--radius-pill);
+            background: transparent;
+            color: rgba(255,255,255,0.55);
+            cursor: pointer;
+            transition: background 0.3s var(--ease-expo), color 0.3s;
+        }
+
+        .date-tab.active {
+            background: var(--amber);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(201,96,26,0.45);
+        }
+
+        .date-tab:not(.active):hover {
+            color: var(--gold);
+        }
+
+        /* ── Panels ── */
+        .date-panels {
+            position: relative;
+        }
+
+        .date-panel {
+            display: none;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .date-panel.active {
+            display: flex;
+        }
+
+        /* ── Individual date card ── */
+        .date-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(212,169,106,0.25);
+            border-radius: var(--radius-md);
+            padding: 14px 22px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            min-width: 110px;
+            transition: border-color 0.25s, transform 0.25s var(--ease-back);
+        }
+
+        .date-card:hover {
+            border-color: rgba(212,169,106,0.6);
+            transform: translateY(-3px);
+        }
+
+        .date-card-month {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .date-card-range {
+            font-family: var(--font-display);
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .date-card-tag {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-top: 2px;
+        }
+
+        /* ── hero-meta: now only 2 pills, keep centred ── */
+        .hero-meta {
+            margin-bottom: 2.4rem;
+            opacity: 0;
+            animation: fadeUp 0.9s var(--ease-expo) 0.75s forwards;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 480px) {
+            .date-card { min-width: 90px; padding: 12px 14px; }
+            .date-card-range { font-size: 1.3rem; }
+            .date-tab { padding: 7px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -1092,10 +1229,52 @@
 
             <h1>Cambodia Photo Tours <em>2026–2027</em></h1>
 
+            <!-- ── Date Tabs ── -->
+            <div class="hero-dates" aria-label="Tour dates by year">
+                <p class="hero-dates-label"><i class="fas fa-calendar-days"></i> Available Tour Dates</p>
+
+                <div class="date-tabs" role="tablist">
+                    <button class="date-tab active" role="tab" aria-selected="true"  data-year="2026">2026</button>
+                    <button class="date-tab"        role="tab" aria-selected="false" data-year="2027">2027</button>
+                </div>
+
+                <div class="date-panels">
+                    <!-- 2026 -->
+                    <div class="date-panel active" data-year="2026" role="tabpanel">
+                        <div class="date-card">
+                            <span class="date-card-month">August</span>
+                            <span class="date-card-range">17 – 28</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">November</span>
+                            <span class="date-card-range">1 – 12</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                    </div>
+                    <!-- 2027 -->
+                    <div class="date-panel" data-year="2027" role="tabpanel">
+                        <div class="date-card">
+                            <span class="date-card-month">March</span>
+                            <span class="date-card-range">13 – 24</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">August</span>
+                            <span class="date-card-range">17 – 28</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">November</span>
+                            <span class="date-card-range">1 – 12</span>
+                            <span class="date-card-tag">12 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Other meta pills ── -->
             <div class="hero-meta">
-                <span class="hero-pill"><i class="fas fa-calendar-days"></i> 17–28 August 2026 &amp; 1–12 November 2026</span>
-                <span class="hero-pill"><i class="fas fa-calendar-days"></i> 13–24 March 2027 &amp; 17–28 August 2027 &amp; 1–12 November 2027</span>
-                <span class="hero-pill"><i class="fas fa-sun"></i> 12 Days</span>
                 <span class="hero-pill"><i class="fas fa-map-marker-alt"></i> 6 Destinations</span>
                 <span class="hero-pill"><i class="fas fa-users"></i> Max 4 Photographers</span>
             </div>
@@ -1448,6 +1627,26 @@
 
         createSlideshow('templesSlideshow', 'templesDots', 5000);
         createSlideshow('peopleSlideshow',  'peopleDots',  5000);
+
+        /* ─── Hero date tabs ─────────────────────────── */
+        const dateTabs   = document.querySelectorAll('.date-tab');
+        const datePanels = document.querySelectorAll('.date-panel');
+
+        dateTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const year = tab.dataset.year;
+
+                dateTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                datePanels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                document.querySelector(`.date-panel[data-year="${year}"]`).classList.add('active');
+            });
+        });
 
     })();
     </script>
