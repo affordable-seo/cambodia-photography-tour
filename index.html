@@ -352,13 +352,16 @@
     .itinerary::before {
       background: url('/images/cambodia-photo-tour.webp') center/cover no-repeat;
       transform-origin: center center;
-      /* Ken Burns Effect: Starts at scale(1) to fit section perfectly, gently zooms to scale(1.1) */
-      animation: kenburns 25s ease-in-out infinite alternate;
+      /* Slow Reveal Effect */
+      opacity: 0;
+      transform: scale(1.1);
+      transition: opacity 2s ease-out, transform 3s ease-out;
     }
 
-    @keyframes kenburns {
-      0%   { transform: scale(1) translate(0%, 0%); }
-      100% { transform: scale(1.1) translate(-1.5%, -1%); }
+    /* Triggered by JS adding .is-visible class when scrolled into view */
+    .itinerary.is-visible::before {
+      opacity: 1;
+      transform: scale(1);
     }
 
     /* Slight overlay to ensure text remains readable over the fully opaque map */
@@ -1746,7 +1749,8 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-      document.querySelectorAll('[data-reveal], .feature-item').forEach(el => {
+      // Optimized: Observe itinerary section as well to trigger background slow reveal
+      document.querySelectorAll('[data-reveal], .feature-item, .itinerary').forEach(el => {
         revealObserver.observe(el);
       });
 
