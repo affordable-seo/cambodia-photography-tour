@@ -339,34 +339,7 @@
       color: var(--white);
       position: relative;
       overflow: hidden;
-    }
-
-    .itinerary::before, .itinerary::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .itinerary::before {
-      background: url('/images/cambodia-photo-tour.webp') center/cover no-repeat;
-      transform-origin: center center;
-      /* Slow Reveal Effect */
-      opacity: 0;
-      transform: scale(1.1);
-      transition: opacity 2s ease-out, transform 3s ease-out;
-    }
-
-    /* Triggered by JS adding .is-visible class when scrolled into view */
-    .itinerary.is-visible::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Slight overlay to ensure text remains readable over the fully opaque map */
-    .itinerary::after {
-      background: linear-gradient(to bottom, rgba(28,23,20,0.5), rgba(28,23,20,0.8));
+      padding-bottom: 0; /* Optimized: Allows the image to sit flush at the bottom */
     }
 
     .itinerary .container { position: relative; z-index: 1; }
@@ -374,6 +347,26 @@
     .itinerary .section-label { color: var(--gold); }
     .itinerary .section-title { color: var(--white); }
     .itinerary .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
+
+    /* Optimized: Full-width image container to show entire picture without cropping */
+    .itinerary-map-wrap {
+      width: 100%;
+      margin-top: 3rem;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 2s ease-out, transform 2.5s ease-out;
+    }
+
+    .itinerary-map-wrap.is-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .itinerary-map-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* ============================================================
        SLIDESHOW — DOUBLE
@@ -1449,6 +1442,10 @@
           <span class="title-rule centered"></span>
         </div>
       </div>
+      <!-- Optimized: Full-width image outside container to prevent cropping -->
+      <div class="itinerary-map-wrap">
+        <img src="/images/cambodia-photo-tour.webp" alt="Map of Cambodia Tour Itinerary">
+      </div>
     </section>
 
     <!-- ============================================================
@@ -1749,8 +1746,8 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-      // Optimized: Observe itinerary section as well to trigger background slow reveal
-      document.querySelectorAll('[data-reveal], .feature-item, .itinerary').forEach(el => {
+      // Optimized: Observe itinerary image container as well to trigger slow reveal
+      document.querySelectorAll('[data-reveal], .feature-item, .itinerary-map-wrap').forEach(el => {
         revealObserver.observe(el);
       });
 
