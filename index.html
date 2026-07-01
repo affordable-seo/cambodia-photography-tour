@@ -342,22 +342,7 @@
       overflow: hidden;
     }
 
-    .itinerary::before, .itinerary::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .itinerary::before {
-      background: url('/images/cambodia-photo-tour.webp') center/cover no-repeat;
-      opacity: 0.15; /* Subtle background texture */
-    }
-
-    .itinerary::after {
-      background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, var(--black) 100%);
-    }
+    /* Removed ::before and ::after to eliminate background image and overlays */
 
     .itinerary .container { position: relative; z-index: 1; }
     .itinerary .section-header { margin-bottom: 3rem; }
