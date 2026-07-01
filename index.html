@@ -613,12 +613,16 @@
       align-items: start;
     }
 
+    /* Optimized: Moved sticky rule BEFORE the media query so mobile overrides correctly */
+    .about-sidebar { 
+      position: sticky; 
+      top: 100px; 
+    }
+
     @media (max-width: 768px) {
       .about-inner { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
     }
-
-    .about-sidebar { position: sticky; top: 100px; }
 
     .about-content p { color: var(--ink-soft); font-size: 1rem; }
 
@@ -1196,22 +1200,17 @@
     .instagram-banner::before {
       content: '';
       position: absolute;
-      inset: -30%; /* Extended significantly for dramatic panning without showing edges */
+      inset: -30%; 
       background:
-        /* Instagram Pink/Magenta Glow */
         radial-gradient(circle at 20% 30%, rgba(193,53,132, 0.45) 0%, transparent 40%),
-        /* Instagram Purple Glow */
         radial-gradient(circle at 80% 20%, rgba(150,47,191, 0.40) 0%, transparent 40%),
-        /* Instagram Blue Glow */
         radial-gradient(circle at 80% 80%, rgba(64,93,230, 0.40) 0%, transparent 40%),
-        /* Instagram Orange/Gold Glow */
         radial-gradient(circle at 20% 80%, rgba(254,218,117, 0.25) 0%, transparent 40%);
       pointer-events: none;
       animation: ambientGlow 15s ease-in-out infinite alternate;
       z-index: 0;
     }
 
-    /* Optimized: Dynamic keyframes for the ambient light sweeping across the entire background */
     @keyframes ambientGlow {
       0%   { transform: scale(1) translate(0%, 0%) rotate(0deg); opacity: 0.7; }
       33%  { transform: scale(1.2) translate(-5%, 5%) rotate(5deg); opacity: 0.9; }
@@ -1245,7 +1244,7 @@
     }
 
     .instagram-banner p {
-      color: rgba(255,255,255,0.65); /* Slightly brighter to contrast with the animated background */
+      color: rgba(255,255,255,0.65); 
       margin: 1.2rem auto 2rem;
       max-width: 520px;
       font-size: 1rem;
