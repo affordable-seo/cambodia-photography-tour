@@ -215,22 +215,19 @@
       overflow: hidden;
     }
 
-    /* Optimized: Background image separated from gradient to allow panning */
     .hero-bg {
       position: absolute;
-      inset: -5%; /* Slightly larger to prevent edge cutoff during panning */
+      inset: -5%;
       background: url('/images/cambodia_photo_tour_bayon_temple.webp') center/cover no-repeat;
       z-index: 0;
       animation: kenburnsHero 25s ease-in-out infinite alternate;
     }
 
-    /* Optimized: Ken Burns effect for Hero */
     @keyframes kenburnsHero {
       0%   { transform: scale(1.05) translate(0%, 0%); }
       100% { transform: scale(1.15) translate(-2%, 2%); }
     }
 
-    /* Optimized: Static gradient overlay sits above the panning image */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -347,13 +344,12 @@
        ITINERARY (Matching Portfolio Dark Theme)
     ============================================================ */
     .itinerary {
-      background: var(--ink); /* Optimized: Matches portfolio section */
+      background: var(--ink);
       color: var(--white);
       position: relative;
       overflow: hidden;
     }
 
-    /* Optimized: Same subtle geometric pattern as the portfolio section */
     .itinerary::before {
       content: '';
       position: absolute;
@@ -369,7 +365,6 @@
     .itinerary .section-title { color: var(--white); }
     .itinerary .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
 
-    /* Optimized: Full-width container to show the entire picture edge-to-edge */
     .itinerary-map-wrap {
       position: relative;
       width: 100%;
@@ -382,7 +377,7 @@
       width: 100%;
       height: auto;
       display: block;
-      /* Slow Reveal Effect */
+      max-width: none; /* Optimized: Forces the image to stretch beyond its native 1536px if necessary */
       opacity: 0;
       transform: scale(1.05);
       transition: opacity 2s var(--ease-expo), transform 2.5s var(--ease-expo);
@@ -533,7 +528,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* Optimized: Pan image from left to right continuously */
       animation: panGuide 20s ease-in-out infinite alternate;
     }
 
@@ -932,7 +926,6 @@
     ============================================================ */
     .features { background: var(--parchment); }
 
-    /* Optimized: Removed comma that broke the grid layout */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -991,7 +984,6 @@
     ============================================================ */
     .contact { background: var(--white); }
 
-    /* Optimized: Set to stretch so both columns match height */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1008,8 +1000,8 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-md);
-      min-height: 380px; /* Ensures a good height on mobile */
-      height: 100%; /* Fills the stretched grid row */
+      min-height: 380px; 
+      height: 100%; 
     }
 
     .map-container iframe {
@@ -1024,7 +1016,6 @@
       border-radius: var(--radius-lg);
       padding: clamp(24px, 4vw, 40px);
       border: 1px solid rgba(201,96,26,.1);
-      /* Optimized: Flexbox to center content vertically in the stretched container */
       display: flex;
       flex-direction: column;
       justify-content: center; 
@@ -1202,11 +1193,10 @@
       font-family: var(--font-body);
     }
 
-    /* Optimized: Extended inset and animated for a breathing glow effect */
     .instagram-banner::before {
       content: '';
       position: absolute;
-      inset: -20%; /* Extended to prevent edge cutoff during scaling */
+      inset: -20%; 
       background:
         radial-gradient(ellipse 70% 70% at 20% 50%, rgba(193,53,132,0.18) 0%, transparent 70%),
         radial-gradient(ellipse 60% 60% at 80% 50%, rgba(64,93,230,0.15) 0%, transparent 70%);
@@ -1214,7 +1204,6 @@
       animation: ambientGlow 12s ease-in-out infinite alternate;
     }
 
-    /* Optimized: Keyframes for the ambient light shifting */
     @keyframes ambientGlow {
       0%   { transform: scale(1) translate(0, 0); opacity: 0.8; }
       50%  { transform: scale(1.15) translate(-3%, 3%); opacity: 1; }
@@ -1409,7 +1398,6 @@
          HERO
     ============================================================ -->
     <section class="hero" aria-label="Hero Section">
-      <!-- Optimized: Separated background and overlay for independent Ken Burns animation -->
       <div class="hero-bg" id="heroBg"></div>
       <div class="hero-overlay"></div>
 
@@ -1524,7 +1512,7 @@
     </section>
 
     <!-- ============================================================
-         ITINERARY (Moved after Double Slideshow)
+         ITINERARY
     ============================================================ -->
     <section class="itinerary" id="itinerary">
       <div class="container">
