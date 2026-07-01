@@ -53,6 +53,7 @@
       --ink-soft:     #3A3028;
       --mist:         #8B7D6F;
       --white:        #FFFFFF;
+      --black:        #000000;
 
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body:    'Jost', system-ui, sans-serif;
@@ -332,11 +333,11 @@
     }
 
     /* ============================================================
-       ITINERARY (Dark Theme Applied)
+       ITINERARY (Pure Black Theme)
     ============================================================ */
     .itinerary {
-      background: var(--ink);
-      color: var(--white); /* Optimized: Dark background */
+      background: var(--black); /* Optimized: Pure black background */
+      color: var(--white);
       position: relative;
       overflow: hidden;
     }
@@ -351,17 +352,17 @@
 
     .itinerary::before {
       background: url('/images/cambodia-photo-tour.webp') center/cover no-repeat;
-      opacity: 0.18; /* Subtle background texture */
+      opacity: 0.15; /* Subtle background texture */
     }
 
     .itinerary::after {
-      background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, var(--ink) 100%);
+      background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, var(--black) 100%);
     }
 
     .itinerary .container { position: relative; z-index: 1; }
     .itinerary .section-header { margin-bottom: 3rem; }
-    .itinerary .section-label { color: var(--gold); } /* Optimized: Readable on dark */
-    .itinerary .section-title { color: var(--white); } /* Optimized: Readable on dark */
+    .itinerary .section-label { color: var(--gold); }
+    .itinerary .section-title { color: var(--white); }
     .itinerary .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
 
     /* Constrained container to show the entire image without cropping */
@@ -371,7 +372,7 @@
       margin-inline: auto;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
       z-index: 1;
     }
 
