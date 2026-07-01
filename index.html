@@ -86,7 +86,7 @@
       color: var(--ink);
       background: var(--cream);
       line-height: 1.7;
-      overflow-x: hidden;
+      overflow-x: clip; /* Optimized: Changed from hidden to clip to prevent breaking position: sticky */
     }
 
     img { display: block; max-width: 100%; height: auto; }
@@ -341,7 +341,7 @@
     }
 
     /* ============================================================
-       ITINERARY (Matching Portfolio Dark Theme)
+       ITINERARY
     ============================================================ */
     .itinerary {
       background: var(--ink);
@@ -377,7 +377,7 @@
       width: 100%;
       height: auto;
       display: block;
-      max-width: none; /* Optimized: Forces the image to stretch beyond its native 1536px if necessary */
+      max-width: none; 
       opacity: 0;
       transform: scale(1.05);
       transition: opacity 2s var(--ease-expo), transform 2.5s var(--ease-expo);
@@ -385,7 +385,7 @@
 
     .itinerary-map-wrap img.is-visible {
       opacity: 1;
-      transform: scale(1);
+      transform: none;
     }
 
     /* ============================================================
@@ -945,7 +945,7 @@
 
     .feature-item.is-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
     .feature-item:hover {
@@ -1165,9 +1165,10 @@
       transition-delay: var(--reveal-delay, 0s);
     }
 
+    /* Optimized: Changed to 'none' to prevent lingering transforms from breaking position: sticky */
     [data-reveal].is-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
     /* ============================================================
@@ -1523,7 +1524,6 @@
         </div>
       </div>
       
-      <!-- Optimized: Full-width image container outside .container -->
       <div class="itinerary-map-wrap">
         <img src="/images/cambodia-photo-tour.webp" alt="Map of Cambodia Tour Itinerary">
       </div>
@@ -1776,7 +1776,6 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-      // Observe itinerary image as well to trigger slow reveal
       document.querySelectorAll('[data-reveal], .feature-item, .itinerary-map-wrap img').forEach(el => {
         revealObserver.observe(el);
       });
