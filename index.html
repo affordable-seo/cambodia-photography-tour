@@ -215,18 +215,29 @@
       overflow: hidden;
     }
 
+    /* Optimized: Background image separated from gradient to allow panning */
     .hero-bg {
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(28,23,20,.82) 0%, rgba(28,23,20,.32) 55%, rgba(28,23,20,.18) 100%),
-        url('/images/cambodia_photo_tour_bayon_temple.webp') center/cover no-repeat;
+      inset: -5%; /* Slightly larger to prevent edge cutoff during panning */
+      background: url('/images/cambodia_photo_tour_bayon_temple.webp') center/cover no-repeat;
       z-index: 0;
-      transform: scale(1.03);
-      transition: transform 12s ease-out;
+      animation: kenburnsHero 25s ease-in-out infinite alternate;
     }
 
-    .hero-bg.loaded { transform: scale(1); }
+    /* Optimized: Ken Burns effect for Hero */
+    @keyframes kenburnsHero {
+      0%   { transform: scale(1.05) translate(0%, 0%); }
+      100% { transform: scale(1.15) translate(-2%, 2%); }
+    }
+
+    /* Optimized: Static gradient overlay sits above the panning image */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,23,20,.82) 0%, rgba(28,23,20,.32) 55%, rgba(28,23,20,.18) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
 
     .hero-content {
       position: relative;
@@ -1182,14 +1193,23 @@
       font-family: var(--font-body);
     }
 
+    /* Optimized: Extended inset and animated for a breathing glow effect */
     .instagram-banner::before {
       content: '';
       position: absolute;
-      inset: 0;
+      inset: -20%; /* Extended to prevent edge cutoff during scaling */
       background:
         radial-gradient(ellipse 70% 70% at 20% 50%, rgba(193,53,132,0.18) 0%, transparent 70%),
         radial-gradient(ellipse 60% 60% at 80% 50%, rgba(64,93,230,0.15) 0%, transparent 70%);
       pointer-events: none;
+      animation: ambientGlow 12s ease-in-out infinite alternate;
+    }
+
+    /* Optimized: Keyframes for the ambient light shifting */
+    @keyframes ambientGlow {
+      0%   { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      50%  { transform: scale(1.15) translate(-3%, 3%); opacity: 1; }
+      100% { transform: scale(1.05) translate(3%, -2%); opacity: 0.85; }
     }
 
     .instagram-banner-content {
@@ -1380,7 +1400,9 @@
          HERO
     ============================================================ -->
     <section class="hero" aria-label="Hero Section">
+      <!-- Optimized: Separated background and overlay for independent Ken Burns animation -->
       <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <p class="hero-eyebrow">An Exclusive Expedition · Limited to 4 Photographers</p>
@@ -1737,12 +1759,6 @@
   <script>
     (function() {
       'use strict';
-
-      /* ─── Hero parallax bg ─────────────────────────── */
-      const heroBg = document.getElementById('heroBg');
-      if (heroBg) {
-        window.addEventListener('load', () => heroBg.classList.add('loaded'), { once: true });
-      }
 
       /* ─── Scroll-reveal utility ──────────────────────── */
       const revealObserver = new IntersectionObserver((entries) => {
