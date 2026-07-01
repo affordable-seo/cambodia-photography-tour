@@ -934,9 +934,10 @@
     ============================================================ */
     .features { background: var(--parchment); }
 
+    /* Optimized: Removed comma that broke the grid layout */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)),
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 22px;
       margin-top: 3rem;
     }
