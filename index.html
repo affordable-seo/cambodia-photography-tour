@@ -86,7 +86,7 @@
       color: var(--ink);
       background: var(--cream);
       line-height: 1.7;
-      overflow-x: clip; /* Optimized: Changed from hidden to clip to prevent breaking position: sticky */
+      overflow-x: clip;
     }
 
     img { display: block; max-width: 100%; height: auto; }
@@ -542,9 +542,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      /* Optimized: Start on the right side before animation triggers */
+      transform: scale(1.3) translateX(-10%); 
+    }
+
+    /* Optimized: Trigger animation on reveal */
+    .guide-image img.is-visible {
       animation: panGuide 20s ease-in-out infinite alternate;
     }
 
+    /* Optimized: Pan from right (-10%) to left (10%) */
     @keyframes panGuide {
       0%   { transform: scale(1.3) translateX(-10%); }
       100% { transform: scale(1.3) translateX(10%); }
@@ -627,7 +634,6 @@
       align-items: start;
     }
 
-    /* Optimized: Moved sticky rule BEFORE the media query so mobile overrides correctly */
     .about-sidebar { 
       position: sticky; 
       top: 100px; 
@@ -1783,7 +1789,6 @@
 
       /* ─── Scroll Progress Bar ─────────────────────────── */
       const progressBar = document.getElementById('scroll-progress');
-      // Colors: CTA Orange (201, 96, 26) -> Portfolio Dark (28, 23, 20)
       const startColor = { r: 201, g: 96, b: 26 }; 
       const endColor = { r: 28, g: 23, b: 20 };   
       let ticking = false;
@@ -1795,7 +1800,6 @@
         
         progressBar.style.width = (progress * 100) + '%';
         
-        // Interpolate color
         const r = Math.round(startColor.r + (endColor.r - startColor.r) * progress);
         const g = Math.round(startColor.g + (endColor.g - startColor.g) * progress);
         const b = Math.round(startColor.b + (endColor.b - startColor.b) * progress);
@@ -1812,7 +1816,7 @@
         }
       }, { passive: true });
       
-      updateProgress(); // Initialize on load
+      updateProgress();
 
       /* ─── Scroll-reveal utility ──────────────────────── */
       const revealObserver = new IntersectionObserver((entries) => {
@@ -1833,7 +1837,8 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-      document.querySelectorAll('[data-reveal], .feature-item, .itinerary-map-wrap img').forEach(el => {
+      // Observe guide image to trigger its specific pan animation
+      document.querySelectorAll('[data-reveal], .feature-item, .itinerary-map-wrap img, .guide-image img').forEach(el => {
         revealObserver.observe(el);
       });
 
