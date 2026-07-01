@@ -110,6 +110,20 @@
     }
 
     /* ============================================================
+       SCROLL PROGRESS BAR
+    ============================================================ */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: var(--amber);
+      z-index: 9999;
+      transition: width 0.1s ease-out, background-color 0.2s ease-out;
+    }
+
+    /* ============================================================
        UTILITY & HELPERS
     ============================================================ */
     .text-center { text-align: center; }
@@ -1401,6 +1415,9 @@
 </head>
 <body>
 
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <main>
     <!-- ============================================================
          HERO
@@ -1763,6 +1780,39 @@
   <script>
     (function() {
       'use strict';
+
+      /* ─── Scroll Progress Bar ─────────────────────────── */
+      const progressBar = document.getElementById('scroll-progress');
+      // Colors: CTA Orange (201, 96, 26) -> Portfolio Dark (28, 23, 20)
+      const startColor = { r: 201, g: 96, b: 26 }; 
+      const endColor = { r: 28, g: 23, b: 20 };   
+      let ticking = false;
+
+      function updateProgress() {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollTop = window.scrollY;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+        
+        progressBar.style.width = (progress * 100) + '%';
+        
+        // Interpolate color
+        const r = Math.round(startColor.r + (endColor.r - startColor.r) * progress);
+        const g = Math.round(startColor.g + (endColor.g - startColor.g) * progress);
+        const b = Math.round(startColor.b + (endColor.b - startColor.b) * progress);
+        
+        progressBar.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateProgress);
+          ticking = true;
+        }
+      }, { passive: true });
+      
+      updateProgress(); // Initialize on load
 
       /* ─── Scroll-reveal utility ──────────────────────── */
       const revealObserver = new IntersectionObserver((entries) => {
