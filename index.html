@@ -148,7 +148,7 @@
     .section-title {
       font-size: clamp(2rem, 4vw, 3rem);
       color: var(--ink);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
 
     .title-rule {
@@ -161,6 +161,46 @@
     }
 
     .title-rule.centered { margin-inline: auto; }
+
+    /* ============================================================
+       SECTION TITLE ROW (for SVG + title alignment)
+    ============================================================ */
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 3vw, 32px);
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title-row .rotating-svg {
+      flex-shrink: 0;
+      width: clamp(50px, 8vw, 85px);
+      height: clamp(50px, 8vw, 85px);
+      filter: drop-shadow(0 4px 12px rgba(201, 96, 26, 0.35));
+      animation: rotateSVG 20s linear infinite;
+    }
+
+    @keyframes rotateSVG {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .section-title-row .title-text-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-title-row .section-label {
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title-row .section-title {
+      margin-bottom: 0;
+    }
 
     /* ============================================================
        BUTTONS
@@ -253,33 +293,8 @@
       z-index: 2;
       text-align: center;
       padding: clamp(32px, 6vw, 64px) clamp(24px, 6vw, 64px);
-      max-width: 960px;
+      max-width: 860px;
       width: 90%;
-    }
-
-    /* Hero title row with rotating SVG */
-    .hero-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(12px, 3vw, 40px);
-      margin-bottom: 1.4rem;
-      opacity: 0;
-      animation: fadeUp 0.9s var(--ease-expo) 0.35s forwards;
-      flex-wrap: wrap;
-    }
-
-    .hero-rotating-svg {
-      flex-shrink: 0;
-      width: clamp(60px, 10vw, 100px);
-      height: clamp(60px, 10vw, 100px);
-      filter: drop-shadow(0 4px 16px rgba(212, 169, 106, 0.45));
-      animation: rotateSVG 20s linear infinite;
-    }
-
-    @keyframes rotateSVG {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
     }
 
     .hero-eyebrow {
@@ -303,12 +318,14 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 6.5vw, 5rem);
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
       font-weight: 300;
       letter-spacing: -0.01em;
       line-height: 1.06;
+      margin-bottom: 1.6rem;
       text-shadow: 0 2px 20px rgba(0,0,0,.3);
-      margin: 0;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-expo) 0.4s forwards;
     }
 
     .hero h1 em {
@@ -444,6 +461,9 @@
     .double-slideshow .section-label { color: var(--white); }
     .double-slideshow .section-label { color: var(--gold); }
     .double-slideshow .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
+    .double-slideshow .rotating-svg {
+      filter: drop-shadow(0 4px 14px rgba(212, 169, 106, 0.5));
+    }
 
     .slideshow-pair {
       display: grid;
@@ -1188,7 +1208,7 @@
     /* ============================================================
        SECTION HEADER HELPER
     ============================================================ */
-    .section-header { max-width: 600px; }
+    .section-header { max-width: 700px; }
 
     .section-header.centered {
       margin-inline: auto;
@@ -1218,11 +1238,11 @@
     @media (max-width: 500px) {
       .hero-meta { gap: 7px; }
       .hero-pill { font-size: 0.75rem; padding: 6px 12px; }
-      .hero-title-row { gap: 10px; }
-      .hero-rotating-svg { width: 50px; height: 50px; }
-      .hero h1   { font-size: 1.8rem; }
+      .hero h1   { font-size: 2.2rem; }
       .stats     { grid-template-columns: repeat(3, 1fr); gap: 10px; }
       .stat-number { font-size: 1.7rem; }
+      .section-title-row { gap: 8px; }
+      .section-title-row .rotating-svg { width: 40px; height: 40px; }
     }
 
     /* ============================================================
@@ -1455,16 +1475,7 @@
 
       <div class="hero-content">
         <p class="hero-eyebrow">An Exclusive Expedition · Limited to 4 Photographers</p>
-        
-        <!-- Title row with rotating SVG on the left -->
-        <div class="hero-title-row">
-          <svg class="hero-rotating-svg" xmlns="http://www.w3.org/2000/svg" viewBox="48 -15 96.5 97" aria-hidden="true">
-            <path d="m96.2-14.4c-25.9 0-47.7 21.4-48.2 46.2-0.5 26.1 19.7 47.7 48.2 47.8 25.7 0 47.8-20.9 47.9-46.6s-20.6-47.4-47.9-47.4z" fill="none" stroke="#D4A96A" stroke-width="1.5" opacity="0.85"/>
-            <path d="m94.1-6 0.7 0.8c0.9 0.9 1.9 1.5 2.7 2.4 2.1 2 12.2 14.4 13.8 25.2 0.4 2.3 0.4 4.6 0.2 6.1l0.4 1.1v0.1 0.1l0.1 0.1 0.7 1.8c2.3-9.5-1.9-20.4-12.5-33.3-1.1-1.1-2-2-3.1-2.9l-2.1-2.1h2.3c10.4 0 20.6 4 27.6 10.8 1.5 1.4 2.9 3 3.7 4.1-0.4 2.2-1 5.5-1.4 7.1-1.5 5.7-5.2 12.9-9.2 17.8-1.4 1.7-3.1 3.4-4.7 4.7-1.3 1-3.2 2.2-4.9 3l-2.3 2.7c4.9-1.5 9.6-4.2 14-9.9 3.8-4.9 7.9-13 8.6-18.8l0.3-1.9 0.5-1.1c3.4 5.4 5.9 11.9 6 19.8 0.1 5.4-1.1 11.2-2.6 14.5l-4.2 1.3c-4.2 1.4-10.1 2.2-15.7 2.2-5.7 0-13-1-19-4.6l-3.1-0.4c4.8 4.2 9.2 6 17.1 6.7 5.2 0.5 9.7 0.3 16.5-0.9 3.4-0.7 4.1-1.5 6.3-1.5h0.3c-0.7 1.8-2.6 4.8-5.1 7.7-5.3 6-11.5 9.6-18.2 11.8-2.3 0.8-4.7 1.2-6.8 1.5l-3-3c-2.5-2.2-6.4-6.7-9.3-11.7-3.7-6.4-6.1-13.2-5.5-19.3l-0.7-1.5-0.6-1.5c-1.7 8.1 1.2 20.7 12.4 32.5l2.8 2.5c0.4 0.4 1.1 1 1.4 1.7-12.2 0.4-23.5-3.8-30.8-11.9-0.8-0.9-1.6-1.9-2.7-3.3l1.3-6.3c1.8-7.5 7.9-18.8 15.7-24.3 1.2-0.9 2.5-1.6 3.8-2.2l2.1-2.8c-5.9 1.8-11.5 5.6-16.9 13.6-3 4.6-6 11-6.6 14.3l-0.5 3-0.6 1.1c-2.7-3.7-5.8-11.1-6.4-17.5-0.4-5.6 0.6-11.7 2.5-16.4l3.9-1.3c4.6-1.6 10.1-2.5 15.8-2.5 5.1 0.1 11.7 0.6 17.1 3.5l2.4 1.3 3.5 0.4c-5-4.1-9.5-6.3-18.7-6.8-5.9-0.2-12.4 0-19.5 2.4l-2 0.4c1.7-3.4 4.4-7.2 8.3-10.6 4.1-4 9.5-7 13.7-8.5 2.6-0.9 5.5-1.6 7.6-1.8 1.5 1.3 3 2.8 4.6 4.2 4.1 3.9 12.3 15 13.4 24.4" fill="none" stroke="#D4A96A" stroke-width="0.8" opacity="0.9"/>
-            <path d="m91.3 18.5c3.5-0.2 5.6-0.2 9.1 0.9 1.4 0.4 3 0.7 4.4 1.1 2.8 4.2 3 6.3 4.7 11.9-1.8 4.3-5.1 6.6-8.3 10.4-5 0.5-7.6-0.7-13.2-1.7-2.8-4.1-3-7.1-4.4-11.4 1.8-4.4 4.9-6.9 7.7-10" fill="#D4A96A" opacity="0.7"/>
-          </svg>
-          <h1>Cambodia Photo Tours <em>2026–2027</em></h1>
-        </div>
+        <h1>Cambodia Photo Tours <em>2026–2027</em></h1>
 
         <div class="hero-dates" aria-label="Tour dates by year">
           <p class="hero-dates-label"><i class="fas fa-calendar-days" aria-hidden="true"></i> Available Tour Dates</p>
@@ -1527,15 +1538,24 @@
       </a>
     </section>
 
-    <!-- Rest of the sections remain unchanged -->
     <!-- ============================================================
          DOUBLE SLIDESHOW
     ============================================================ -->
     <section class="double-slideshow">
       <div class="container">
         <div class="section-header centered" data-reveal>
-          <span class="section-label">The Portfolio</span>
-          <h2 class="section-title">Cambodia In Pictures</h2>
+          <!-- Title row with rotating SVG on the left -->
+          <div class="section-title-row">
+            <svg class="rotating-svg" xmlns="http://www.w3.org/2000/svg" viewBox="48 -15 96.5 97" aria-hidden="true">
+              <path d="m96.2-14.4c-25.9 0-47.7 21.4-48.2 46.2-0.5 26.1 19.7 47.7 48.2 47.8 25.7 0 47.8-20.9 47.9-46.6s-20.6-47.4-47.9-47.4z" fill="none" stroke="#D4A96A" stroke-width="1.8" opacity="0.9"/>
+              <path d="m94.1-6 0.7 0.8c0.9 0.9 1.9 1.5 2.7 2.4 2.1 2 12.2 14.4 13.8 25.2 0.4 2.3 0.4 4.6 0.2 6.1l0.4 1.1v0.1 0.1l0.1 0.1 0.7 1.8c2.3-9.5-1.9-20.4-12.5-33.3-1.1-1.1-2-2-3.1-2.9l-2.1-2.1h2.3c10.4 0 20.6 4 27.6 10.8 1.5 1.4 2.9 3 3.7 4.1-0.4 2.2-1 5.5-1.4 7.1-1.5 5.7-5.2 12.9-9.2 17.8-1.4 1.7-3.1 3.4-4.7 4.7-1.3 1-3.2 2.2-4.9 3l-2.3 2.7c4.9-1.5 9.6-4.2 14-9.9 3.8-4.9 7.9-13 8.6-18.8l0.3-1.9 0.5-1.1c3.4 5.4 5.9 11.9 6 19.8 0.1 5.4-1.1 11.2-2.6 14.5l-4.2 1.3c-4.2 1.4-10.1 2.2-15.7 2.2-5.7 0-13-1-19-4.6l-3.1-0.4c4.8 4.2 9.2 6 17.1 6.7 5.2 0.5 9.7 0.3 16.5-0.9 3.4-0.7 4.1-1.5 6.3-1.5h0.3c-0.7 1.8-2.6 4.8-5.1 7.7-5.3 6-11.5 9.6-18.2 11.8-2.3 0.8-4.7 1.2-6.8 1.5l-3-3c-2.5-2.2-6.4-6.7-9.3-11.7-3.7-6.4-6.1-13.2-5.5-19.3l-0.7-1.5-0.6-1.5c-1.7 8.1 1.2 20.7 12.4 32.5l2.8 2.5c0.4 0.4 1.1 1 1.4 1.7-12.2 0.4-23.5-3.8-30.8-11.9-0.8-0.9-1.6-1.9-2.7-3.3l1.3-6.3c1.8-7.5 7.9-18.8 15.7-24.3 1.2-0.9 2.5-1.6 3.8-2.2l2.1-2.8c-5.9 1.8-11.5 5.6-16.9 13.6-3 4.6-6 11-6.6 14.3l-0.5 3-0.6 1.1c-2.7-3.7-5.8-11.1-6.4-17.5-0.4-5.6 0.6-11.7 2.5-16.4l3.9-1.3c4.6-1.6 10.1-2.5 15.8-2.5 5.1 0.1 11.7 0.6 17.1 3.5l2.4 1.3 3.5 0.4c-5-4.1-9.5-6.3-18.7-6.8-5.9-0.2-12.4 0-19.5 2.4l-2 0.4c1.7-3.4 4.4-7.2 8.3-10.6 4.1-4 9.5-7 13.7-8.5 2.6-0.9 5.5-1.6 7.6-1.8 1.5 1.3 3 2.8 4.6 4.2 4.1 3.9 12.3 15 13.4 24.4" fill="none" stroke="#D4A96A" stroke-width="0.6" opacity="0.85"/>
+              <path d="m91.3 18.5c3.5-0.2 5.6-0.2 9.1 0.9 1.4 0.4 3 0.7 4.4 1.1 2.8 4.2 3 6.3 4.7 11.9-1.8 4.3-5.1 6.6-8.3 10.4-5 0.5-7.6-0.7-13.2-1.7-2.8-4.1-3-7.1-4.4-11.4 1.8-4.4 4.9-6.9 7.7-10" fill="#D4A96A" opacity="0.65"/>
+            </svg>
+            <div class="title-text-group">
+              <span class="section-label">The Portfolio</span>
+              <h2 class="section-title">Cambodia In Pictures</h2>
+            </div>
+          </div>
           <span class="title-rule centered"></span>
         </div>
 
