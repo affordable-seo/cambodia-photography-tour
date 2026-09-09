@@ -52,6 +52,7 @@
       --mist:         #8B7D6F;
       --white:        #FFFFFF;
       --black:        #000000;
+      --fb-blue:      #1877F2;
 
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body:    'Jost', system-ui, sans-serif;
@@ -69,9 +70,6 @@
       --radius-pill:  999px;
     }
 
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
     *, *::before, *::after {
       margin: 0; padding: 0;
       box-sizing: border-box;
@@ -107,9 +105,6 @@
       padding-inline: 16px;
     }
 
-    /* ============================================================
-       SCROLL PROGRESS BAR
-    ============================================================ */
     #scroll-progress {
       position: fixed;
       top: 0;
@@ -121,9 +116,6 @@
       transition: width 0.1s ease-out, background-color 0.2s ease-out;
     }
 
-    /* ============================================================
-       UTILITY & HELPERS
-    ============================================================ */
     .text-center { text-align: center; }
     .text-amber  { color: var(--amber); }
     .icon-mr     { margin-right: 8px; }
@@ -131,9 +123,6 @@
     .btn-block   { width: 100%; justify-content: center; }
     .btn-ghost-gold { border-color: rgba(212,169,106,.45); color: var(--gold); }
 
-    /* ============================================================
-       SECTION TITLES
-    ============================================================ */
     .section-label {
       display: block;
       font-family: var(--font-body);
@@ -159,12 +148,8 @@
       border-radius: 2px;
       margin-top: 1.2rem;
     }
-
     .title-rule.centered { margin-inline: auto; }
 
-    /* ============================================================
-       SECTION TITLE ROW (for SVG + title alignment)
-    ============================================================ */
     .section-title-row {
       display: flex;
       align-items: center;
@@ -173,7 +158,6 @@
       flex-wrap: wrap;
       margin-bottom: 1.5rem;
     }
-
     .section-title-row .rotating-svg {
       flex-shrink: 0;
       width: clamp(50px, 8vw, 85px);
@@ -181,30 +165,19 @@
       filter: drop-shadow(0 4px 12px rgba(201, 96, 26, 0.35));
       animation: rotateSVG 20s linear infinite;
     }
-
     @keyframes rotateSVG {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
-
     .section-title-row .title-text-group {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
+    .section-title-row .section-label { margin-bottom: 0.4rem; }
+    .section-title-row .section-title { margin-bottom: 0; }
 
-    .section-title-row .section-label {
-      margin-bottom: 0.4rem;
-    }
-
-    .section-title-row .section-title {
-      margin-bottom: 0;
-    }
-
-    /* ============================================================
-       BUTTONS
-    ============================================================ */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -225,7 +198,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .btn::after {
       content: '';
       position: absolute;
@@ -234,30 +206,12 @@
       transform: translateX(-100%);
       transition: transform 0.55s var(--ease-expo);
     }
-
-    .btn:hover {
-      background: var(--amber-light);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 32px rgba(201,96,26,.45);
-    }
-
+    .btn:hover { background: var(--amber-light); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(201,96,26,.45); }
     .btn:hover::after { transform: translateX(100%); }
+    .btn-ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.5); box-shadow: none; }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.9); box-shadow: none; }
 
-    .btn-ghost {
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,.5);
-      box-shadow: none;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255,255,255,.1);
-      border-color: rgba(255,255,255,.9);
-      box-shadow: none;
-    }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100svh;
@@ -266,7 +220,6 @@
       color: var(--white);
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       inset: -5%;
@@ -274,12 +227,10 @@
       z-index: 0;
       animation: kenburnsHero 25s ease-in-out infinite alternate;
     }
-
     @keyframes kenburnsHero {
       0%   { transform: scale(1.05) translate(0%, 0%); }
       100% { transform: scale(1.15) translate(-2%, 2%); }
     }
-
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -287,16 +238,14 @@
       z-index: 1;
       pointer-events: none;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
       padding: clamp(32px, 6vw, 64px) clamp(24px, 6vw, 64px);
-      max-width: 860px;
-      width: 90%;
+      max-width: 900px;
+      width: 92%;
     }
-
     .hero-eyebrow {
       font-family: var(--font-body);
       font-size: 0.75rem;
@@ -316,34 +265,27 @@
       border: 1px solid rgba(212, 169, 106, 0.3);
       text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
     }
-
     .hero h1 {
       font-size: clamp(2.6rem, 7vw, 5.5rem);
       font-weight: 300;
       letter-spacing: -0.01em;
       line-height: 1.06;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.4rem;
       text-shadow: 0 2px 20px rgba(0,0,0,.3);
       opacity: 0;
       animation: fadeUp 0.9s var(--ease-expo) 0.4s forwards;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-      font-weight: 400;
-    }
+    .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
-      margin-bottom: 2.4rem;
+      margin-bottom: 2.2rem;
       opacity: 0;
       animation: fadeUp 0.9s var(--ease-expo) 0.75s forwards;
     }
-
     .hero-pill {
       display: inline-flex;
       align-items: center;
@@ -357,9 +299,7 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
-
     .hero-pill i { color: var(--gold); font-size: 0.78rem; }
-
     .hero-actions {
       display: flex;
       gap: 14px;
@@ -368,7 +308,6 @@
       opacity: 0;
       animation: fadeUp 0.9s var(--ease-expo) 0.8s forwards;
     }
-
     .scroll-indicator {
       position: absolute;
       bottom: 32px;
@@ -381,970 +320,21 @@
       transition: color 0.2s;
     }
     .scroll-indicator:hover { color: var(--white); }
-
     @keyframes scrollBounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50%      { transform: translateX(-50%) translateY(8px); }
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ============================================================
-       ITINERARY
-    ============================================================ */
-    .itinerary {
-      background: var(--ink);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .itinerary::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .itinerary .container { position: relative; z-index: 1; }
-    .itinerary .section-header { margin-bottom: 3rem; }
-    .itinerary .section-label { color: var(--gold); }
-    .itinerary .section-title { color: var(--white); }
-    .itinerary .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
-
-    .itinerary-map-wrap {
-      position: relative;
-      width: 100%;
-      margin-top: 3rem;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .itinerary-map-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-      max-width: none; 
-      opacity: 0;
-      transform: scale(1.05);
-      transition: opacity 2s var(--ease-expo), transform 2.5s var(--ease-expo);
-    }
-
-    .itinerary-map-wrap img.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ============================================================
-       SLIDESHOW — DOUBLE
-    ============================================================ */
-    .double-slideshow {
-      background: var(--ink);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .double-slideshow::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-
-    .double-slideshow .section-title,
-    .double-slideshow .section-label { color: var(--white); }
-    .double-slideshow .section-label { color: var(--gold); }
-    .double-slideshow .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
-    .double-slideshow .rotating-svg {
-      filter: drop-shadow(0 4px 14px rgba(212, 169, 106, 0.5));
-    }
-
-    .slideshow-pair {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
-      gap: 28px;
-      margin-top: 3rem;
-    }
-
-    .slideshow-card {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      transition: transform 0.4s var(--ease-expo);
-    }
-
-    .slideshow-card:hover { transform: translateY(-6px); }
-
-    .slideshow-card-title {
-      padding: 18px 22px 14px;
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .slideshow-container .mySlides {
-      display: none;
-      height: clamp(220px, 30vw, 420px);
-      background: var(--ink-soft);
-    }
-
-    .slideshow-container .mySlides.is-active {
-      display: block;
-      animation: fadeEffect 0.8s ease;
-    }
-
-    .slideshow-container .mySlides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      padding: 16px;
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.25);
-      cursor: pointer;
-      border: none;
-      padding: 0;
-      transition: background 0.3s, transform 0.3s var(--ease-back);
-    }
-
-    .dot:hover { background: rgba(255,255,255,.5); }
-    .dot.active-dot { background: var(--gold); transform: scale(1.5); }
-
-    @keyframes fadeEffect {
-      from { opacity: 0.3; }
-      to   { opacity: 1; }
-    }
-
-    /* ============================================================
-       GUIDE SECTION
-    ============================================================ */
-    .guide-section {
-      background: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .guide-section::after {
-      content: '';
-      position: absolute;
-      bottom: -120px; left: -120px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--amber-glow) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 72px);
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-      .two-columns { grid-template-columns: 1fr; }
-    }
-
-    .guide-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      aspect-ratio: 4/5;
-      position: relative;
-    }
-
-    .guide-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.3) translateX(-10%); 
-    }
-
-    .guide-image img.is-visible {
-      animation: panGuide 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes panGuide {
-      0%   { transform: scale(1.3) translateX(-10%); }
-      100% { transform: scale(1.3) translateX(10%); }
-    }
-
-    .guide-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-lg);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.15);
-      pointer-events: none;
-    }
-
-    .guide-text { position: relative; z-index: 1; }
-
-    .guide-text h2 {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      margin-bottom: 1.2rem;
-      font-weight: 400;
-    }
-
-    .guide-text p {
-      font-size: 1rem;
-      color: var(--ink-soft);
-      line-height: 1.8;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 2.4rem;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 18px 12px;
-      background: var(--parchment);
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(201,96,26,.12);
-      transition: transform 0.3s var(--ease-back), box-shadow 0.3s;
-    }
-
-    .stat-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .stat-number {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--amber);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--mist);
-    }
-
-    /* ============================================================
-       ABOUT SECTION
-    ============================================================ */
-    .about {
-      background: var(--white);
-      position: relative;
-    }
-
-    .about-inner {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: clamp(40px, 6vw, 100px);
-      align-items: start;
-    }
-
-    .about-sidebar { 
-      position: sticky; 
-      top: 100px; 
-    }
-
-    @media (max-width: 768px) {
-      .about-inner { grid-template-columns: 1fr; }
-      .about-sidebar { position: static; }
-    }
-
-    .about-content p { color: var(--ink-soft); font-size: 1rem; }
-
-    .about-content h3 {
-      font-size: 1.6rem;
-      margin-top: 2.2rem;
-      margin-bottom: 0.8rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .about-content strong {
-      color: var(--amber);
-      font-weight: 600;
-    }
-
-    /* ============================================================
-       PRICING
-    ============================================================ */
-    .pricing {
-      background: var(--ink);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pricing::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 65% 55% at 15% 60%, rgba(201,96,26,.20) 0%, transparent 60%),
-        radial-gradient(ellipse 55% 55% at 85% 25%, rgba(212,169,106,.10) 0%, transparent 55%);
-      pointer-events: none;
-    }
-
-    .pricing-header, .pricing-grid, .pricing-discount-strip, .price-note {
-      position: relative;
-      z-index: 1;
-    }
-
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .pricing-header .section-label { color: var(--gold); display: block; margin-bottom: 0.6rem; }
-    .pricing-header .section-title { color: var(--white); margin-bottom: 1rem; }
-
-    .spots-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(201,96,26,.22);
-      border: 1px solid rgba(201,96,26,.40);
-      color: var(--gold);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      padding: 7px 18px;
-      border-radius: var(--radius-pill);
-    }
-
-    .spots-badge i { font-size: 0.68rem; color: var(--amber-light); }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      max-width: 860px;
-      margin-inline: auto;
-    }
-
-    @media (max-width: 640px) {
-      .pricing-grid { grid-template-columns: 1fr; }
-    }
-
-    .price-card {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius-lg);
-      padding: clamp(28px, 4vw, 48px) clamp(24px, 3.5vw, 40px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.35s var(--ease-expo), border-color 0.3s, box-shadow 0.35s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .price-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(212,169,106,.35);
-      box-shadow: 0 24px 60px rgba(0,0,0,.35);
-    }
-
-    .price-card--featured {
-      border-color: rgba(201,96,26,.45);
-      background: rgba(201,96,26,.10);
-    }
-
-    .price-card--featured:hover { border-color: rgba(201,96,26,.75); }
-
-    .price-card--featured::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(201,96,26,.18), transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .price-card > * { position: relative; z-index: 1; }
-
-    .price-card-badge {
-      font-family: var(--font-body);
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--amber);
-      padding: 5px 14px;
-      border-radius: var(--radius-pill);
-      margin-bottom: 1.4rem;
-    }
-
-    .price-card-badge--group {
-      background: rgba(212,169,106,.20);
-      color: var(--gold);
-      border: 1px solid rgba(212,169,106,.30);
-    }
-
-    .price-card-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .price-card--featured .price-card-icon {
-      background: rgba(201,96,26,.25);
-      color: var(--amber-light);
-    }
-
-    .price-card--group .price-card-icon {
-      background: rgba(212,169,106,.12);
-      color: var(--gold);
-    }
-
-    .price-card-title {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      margin-bottom: 0.5rem;
-    }
-
-    .price-amount {
-      font-family: var(--font-display);
-      line-height: 1;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-
-    .price-amount .currency {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      font-weight: 400;
-      vertical-align: super;
-      background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .price-amount .figure {
-      font-size: clamp(3.2rem, 8vw, 5rem);
-      background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .price-per {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,.40);
-      margin-bottom: 1.8rem;
-      letter-spacing: 0.04em;
-    }
-
-    .price-group-size {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      margin-bottom: 1.6rem;
-    }
-
-    .price-group-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(212,169,106,.15);
-      border: 1px solid rgba(212,169,106,.25);
-      display: grid;
-      place-items: center;
-      font-size: 0.65rem;
-      color: var(--gold);
-    }
-
-    .price-group-dot.filled {
-      background: rgba(212,169,106,.30);
-      border-color: rgba(212,169,106,.55);
-    }
-
-    .price-includes {
-      list-style: none;
-      width: 100%;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .price-includes li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,.70);
-      text-align: left;
-    }
-
-    .price-includes li i {
-      color: var(--gold);
-      font-size: 0.72rem;
-      flex-shrink: 0;
-    }
-
-    .price-saving {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(212,169,106,.12);
-      border: 1px solid rgba(212,169,106,.28);
-      color: var(--gold);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      padding: 5px 13px;
-      border-radius: var(--radius-pill);
-      margin-bottom: 1.6rem;
-    }
-
-    .pricing-discount-strip {
-      max-width: 860px;
-      margin: 22px auto 0;
-      background: rgba(212,169,106,.08);
-      border: 1px solid rgba(212,169,106,.20);
-      border-radius: var(--radius-md);
-      padding: 18px 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .pricing-discount-strip i {
-      font-size: 1.1rem;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .pricing-discount-strip p {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,.60);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .pricing-discount-strip strong {
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .price-note {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,.35);
-      margin-top: 1.2rem;
-      text-align: center;
-      max-width: 860px;
-      margin-inline: auto;
-    }
-
-    /* ============================================================
-       FEATURES
-    ============================================================ */
-    .features { background: var(--parchment); }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: 3rem;
-    }
-
-    .feature-item {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: clamp(22px, 3vw, 36px);
-      border: 1px solid rgba(201,96,26,.08);
-      transition: transform 0.4s var(--ease-expo), box-shadow 0.4s, border-color 0.3s, opacity 0.8s var(--ease-expo);
-      opacity: 0;
-      transform: translateY(24px);
-    }
-
-    .feature-item.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .feature-item:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(201,96,26,.2);
-    }
-
-    .feature-icon {
-      width: 52px;
-      height: 52px;
-      background: var(--amber-glow);
-      border-radius: var(--radius-sm);
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      color: var(--amber);
-      margin-bottom: 1.2rem;
-    }
-
-    .feature-item h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: var(--ink);
-    }
-
-    .feature-item p {
-      font-size: 0.9rem;
-      color: var(--mist);
-      margin-bottom: 0;
-      line-height: 1.6;
-    }
-
-    /* ============================================================
-       CONTACT
-    ============================================================ */
-    .contact { background: var(--white); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 3rem;
-      align-items: stretch; 
-    }
-
-    @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-
-    .map-container {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      min-height: 380px; 
-      height: 100%; 
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    .contact-info {
-      background: var(--parchment);
-      border-radius: var(--radius-lg);
-      padding: clamp(24px, 4vw, 40px);
-      border: 1px solid rgba(201,96,26,.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center; 
-    }
-
-    .contact-info h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1.6rem;
-      color: var(--ink);
-    }
-
-    .address h4 {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--amber);
-      margin-bottom: 0.5rem;
-    }
-
-    .address p {
-      font-size: 0.9rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 1.6rem;
-    }
-
-    .contact-details { margin-bottom: 1.8rem; }
-
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      font-size: 0.92rem;
-      color: var(--ink-soft);
-    }
-
-    .contact-detail i {
-      width: 34px;
-      height: 34px;
-      background: var(--amber-glow);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      color: var(--amber);
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    .social-links { display: flex; gap: 12px; }
-
-    .social-links a {
-      width: 44px;
-      height: 44px;
-      background: var(--amber);
-      color: var(--white);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.1rem;
-      transition: background 0.3s, transform 0.3s var(--ease-back);
-    }
-
-    .social-links a:hover {
-      background: var(--amber-light);
-      transform: translateY(-3px);
-    }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      background: var(--ink);
-      color: rgba(255,255,255,.45);
-      text-align: center;
-      padding: 28px 0;
-      font-size: 0.84rem;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      14%      { transform: scale(1.3); }
-      28%      { transform: scale(1); }
-      42%      { transform: scale(1.2); }
-      56%      { transform: scale(1); }
-    }
-
-    .footer-heart {
-      display: inline-block;
-      animation: heartbeat 1.6s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    /* ============================================================
-       WHATSAPP FLOAT
-    ============================================================ */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 60px;
-      height: 60px;
-      background: #25D366;
-      color: var(--white);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.8rem;
-      box-shadow: 0 6px 28px rgba(37,211,102,.45);
-      z-index: 1000;
-      transition: transform 0.35s var(--ease-back), box-shadow 0.3s;
-      animation: floatWA 3.5s ease-in-out infinite;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.12) translateY(-4px);
-      box-shadow: 0 10px 36px rgba(37,211,102,.55);
-      animation: none;
-    }
-
-    @keyframes floatWA {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-8px); }
-    }
-
-    /* ============================================================
-       SECTION HEADER HELPER
-    ============================================================ */
-    .section-header { max-width: 700px; }
-
-    .section-header.centered {
-      margin-inline: auto;
-      text-align: center;
-    }
-
-    .section-header.centered .title-rule { margin-inline: auto; }
-
-    /* ============================================================
-       SCROLL REVEAL
-    ============================================================ */
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo);
-      transition-delay: var(--reveal-delay, 0s);
-    }
-
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ============================================================
-       RESPONSIVE TWEAKS
-    ============================================================ */
-    @media (max-width: 500px) {
-      .hero-meta { gap: 7px; }
-      .hero-pill { font-size: 0.75rem; padding: 6px 12px; }
-      .hero h1   { font-size: 2.2rem; }
-      .stats     { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .stat-number { font-size: 1.7rem; }
-      .section-title-row { gap: 8px; }
-      .section-title-row .rotating-svg { width: 40px; height: 40px; }
-    }
-
-    /* ============================================================
-       INSTAGRAM BANNER
-    ============================================================ */
-    .instagram-banner {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(4rem, 8vw, 7rem) 1.5rem;
-      text-align: center;
-      background: linear-gradient(135deg, #1e1225 0%, #2e0e1a 50%, #1a0c0c 100%);
-      font-family: var(--font-body);
-    }
-
-    .instagram-banner::before {
-      content: '';
-      position: absolute;
-      inset: -30%; 
-      background:
-        radial-gradient(circle at 20% 30%, rgba(193,53,132, 0.45) 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(150,47,191, 0.40) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(64,93,230, 0.40) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(254,218,117, 0.25) 0%, transparent 40%);
-      pointer-events: none;
-      animation: ambientGlow 15s ease-in-out infinite alternate;
-      z-index: 0;
-    }
-
-    @keyframes ambientGlow {
-      0%   { transform: scale(1) translate(0%, 0%) rotate(0deg); opacity: 0.7; }
-      33%  { transform: scale(1.2) translate(-5%, 5%) rotate(5deg); opacity: 0.9; }
-      66%  { transform: scale(1.1) translate(5%, -5%) rotate(-5deg); opacity: 1; }
-      100% { transform: scale(1.15) translate(-3%, -3%) rotate(3deg); opacity: 0.8; }
-    }
-
-    .instagram-banner-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .instagram-banner .label {
-      color: #c36dab;
-      display: block;
-      margin-bottom: 0.75rem;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .instagram-banner h2 {
-      color: var(--white);
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 400;
-      margin-bottom: 0;
-    }
-
-    .instagram-banner p {
-      color: rgba(255,255,255,0.65); 
-      margin: 1.2rem auto 2rem;
-      max-width: 520px;
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: linear-gradient(135deg, #833AB4, #C13584, #E1306C, #FD1D1D);
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 1rem 2.2rem;
-      border-radius: var(--radius-pill);
-      transition: opacity 0.25s ease, transform 0.25s var(--ease-expo), box-shadow 0.25s ease;
-      box-shadow: 0 8px 30px rgba(225,48,108,0.35);
-    }
-
-    .instagram-link:hover {
-      opacity: 0.88;
-      transform: translateY(-2px);
-      box-shadow: 0 14px 40px rgba(225,48,108,0.5);
-    }
-
-    .instagram-link i { font-size: 1.1rem; }
-
-    /* ============================================================
-       HERO DATE TABS
-    ============================================================ */
+    /* HERO DATE TABS */
     .hero-dates {
       margin-bottom: 1.8rem;
       opacity: 0;
       animation: fadeUp 0.9s var(--ease-expo) 0.6s forwards;
     }
-
     .hero-dates-label {
       font-family: var(--font-body);
       font-size: 0.72rem;
@@ -1358,9 +348,7 @@
       justify-content: center;
       gap: 7px;
     }
-
     .hero-dates-label i { font-size: 0.75rem; }
-
     .date-tabs {
       display: inline-flex;
       gap: 0;
@@ -1372,7 +360,6 @@
       -webkit-backdrop-filter: blur(10px);
       margin-bottom: 1.1rem;
     }
-
     .date-tab {
       font-family: var(--font-body);
       font-size: 0.8rem;
@@ -1386,26 +373,11 @@
       cursor: pointer;
       transition: background 0.3s var(--ease-expo), color 0.3s;
     }
-
-    .date-tab.active {
-      background: var(--amber);
-      color: var(--white);
-      box-shadow: 0 4px 16px rgba(201,96,26,0.45);
-    }
-
+    .date-tab.active { background: var(--amber); color: var(--white); box-shadow: 0 4px 16px rgba(201,96,26,0.45); }
     .date-tab:not(.active):hover { color: var(--gold); }
-
     .date-panels { position: relative; }
-
-    .date-panel {
-      display: none;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
+    .date-panel { display: none; justify-content: center; gap: 10px; flex-wrap: wrap; }
     .date-panel.active { display: flex; }
-
     .date-card {
       display: flex;
       flex-direction: column;
@@ -1417,103 +389,238 @@
       padding: 14px 22px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      min-width: 110px;
+      min-width: 120px;
       transition: border-color 0.25s, transform 0.25s var(--ease-back);
     }
-
-    .date-card:hover {
-      border-color: rgba(212,169,106,0.6);
-      transform: translateY(-3px);
-    }
-
-    .date-card-month {
-      font-family: var(--font-body);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .date-card-range {
-      font-family: var(--font-display);
-      font-size: 1.55rem;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.1;
-    }
-
-    .date-card-tag {
-      font-family: var(--font-body);
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-top: 2px;
-    }
-
+    .date-card:hover { border-color: rgba(212,169,106,0.6); transform: translateY(-3px); }
+    .date-card-month { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .date-card-range { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: var(--white); line-height: 1.1; }
+    .date-card-tag { display: none; }
     @media (max-width: 480px) {
-      .date-card { min-width: 90px; padding: 12px 14px; }
+      .date-card { min-width: 100px; padding: 12px 16px; }
       .date-card-range { font-size: 1.3rem; }
       .date-tab { padding: 7px 20px; }
     }
+
+    /* ITINERARY */
+    .itinerary { background: var(--ink); color: var(--white); position: relative; overflow: hidden; }
+    .itinerary::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+    .itinerary .container { position: relative; z-index: 1; }
+    .itinerary .section-header { margin-bottom: 3rem; }
+    .itinerary .section-label { color: var(--gold); }
+    .itinerary .section-title { color: var(--white); }
+    .itinerary .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
+    .itinerary-map-wrap { position: relative; width: 100%; margin-top: 3rem; overflow: hidden; z-index: 1; }
+    .itinerary-map-wrap img { width: 100%; height: auto; display: block; max-width: none; opacity: 0; transform: scale(1.05); transition: opacity 2s var(--ease-expo), transform 2.5s var(--ease-expo); }
+    .itinerary-map-wrap img.is-visible { opacity: 1; transform: none; }
+
+    /* DOUBLE SLIDESHOW */
+    .double-slideshow { background: var(--ink); position: relative; overflow: hidden; }
+    .double-slideshow::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+    .double-slideshow .section-title, .double-slideshow .section-label { color: var(--white); }
+    .double-slideshow .section-label { color: var(--gold); }
+    .double-slideshow .title-rule { background: linear-gradient(90deg, var(--gold), var(--amber)); }
+    .double-slideshow .rotating-svg { filter: drop-shadow(0 4px 14px rgba(212, 169, 106, 0.5)); }
+    .slideshow-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 28px; margin-top: 3rem; }
+    .slideshow-card { border-radius: var(--radius-md); overflow: hidden; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); transition: transform 0.4s var(--ease-expo); }
+    .slideshow-card:hover { transform: translateY(-6px); }
+    .slideshow-card-title { padding: 18px 22px 14px; font-family: var(--font-body); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .slideshow-container { position: relative; width: 100%; overflow: hidden; }
+    .slideshow-container .mySlides { display: none; height: clamp(220px, 30vw, 420px); background: var(--ink-soft); }
+    .slideshow-container .mySlides.is-active { display: block; animation: fadeEffect 0.8s ease; }
+    .slideshow-container .mySlides img { width: 100%; height: 100%; object-fit: cover; }
+    .dots { display: flex; justify-content: center; gap: 6px; padding: 16px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.25); cursor: pointer; border: none; padding: 0; transition: background 0.3s, transform 0.3s var(--ease-back); }
+    .dot:hover { background: rgba(255,255,255,.5); }
+    .dot.active-dot { background: var(--gold); transform: scale(1.5); }
+    @keyframes fadeEffect { from { opacity: 0.3; } to { opacity: 1; } }
+
+    /* GUIDE SECTION */
+    .guide-section { background: var(--cream); position: relative; overflow: hidden; }
+    .guide-section::after { content: ''; position: absolute; bottom: -120px; left: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, var(--amber-glow) 0%, transparent 65%); pointer-events: none; }
+    .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+    @media (max-width: 768px) { .two-columns { grid-template-columns: 1fr; } }
+    .guide-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/5; position: relative; }
+    .guide-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.2) translateX(-8%); }
+    .guide-image img.is-visible { animation: panGuide 16s ease-in-out infinite alternate; }
+    @keyframes panGuide {
+      0%   { transform: scale(1.25) translateX(-6%); }
+      100% { transform: scale(1.25) translateX(4%); }
+    }
+    .guide-image::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); pointer-events: none; }
+    .guide-text { position: relative; z-index: 1; }
+    .guide-text h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 1.2rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; }
+    .guide-text p { font-size: 1rem; color: var(--ink-soft); line-height: 1.8; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 2.4rem; }
+    .stat-item { text-align: center; padding: 18px 12px; background: var(--parchment); border-radius: var(--radius-md); border: 1px solid rgba(201,96,26,.12); transition: transform 0.3s var(--ease-back), box-shadow 0.3s; }
+    .stat-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .stat-number { display: block; font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mist); }
+
+    /* ABOUT */
+    .about { background: var(--white); position: relative; }
+    .about-inner { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+    .about-sidebar { position: sticky; top: 100px; }
+    @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; } .about-sidebar { position: static; } }
+    .about-content p { color: var(--ink-soft); font-size: 1rem; }
+    .about-content h3 { font-size: 1.6rem; margin-top: 2.2rem; margin-bottom: 0.8rem; font-weight: 600; color: var(--ink); }
+    .about-content strong { color: var(--amber); font-weight: 600; }
+
+    /* PRICING */
+    .pricing { background: var(--ink); color: var(--white); position: relative; overflow: hidden; }
+    .pricing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 15% 60%, rgba(201,96,26,.20) 0%, transparent 60%), radial-gradient(ellipse 55% 55% at 85% 25%, rgba(212,169,106,.10) 0%, transparent 55%); pointer-events: none; }
+    .pricing-header, .pricing-grid, .pricing-discount-strip, .price-note { position: relative; z-index: 1; }
+    .pricing-header { text-align: center; margin-bottom: 3rem; }
+    .pricing-header .section-label { color: var(--gold); display: block; margin-bottom: 0.6rem; }
+    .pricing-header .section-title { color: var(--white); margin-bottom: 1rem; }
+    .spots-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,96,26,.22); border: 1px solid rgba(201,96,26,.40); color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; padding: 7px 18px; border-radius: var(--radius-pill); }
+    .spots-badge i { font-size: 0.68rem; color: var(--amber-light); }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 860px; margin-inline: auto; }
+    @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10); border-radius: var(--radius-lg); padding: clamp(28px, 4vw, 48px) clamp(24px, 3.5vw, 40px); display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.35s var(--ease-expo), border-color 0.3s, box-shadow 0.35s; position: relative; overflow: hidden; }
+    .price-card:hover { transform: translateY(-6px); border-color: rgba(212,169,106,.35); box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+    .price-card--featured { border-color: rgba(201,96,26,.45); background: rgba(201,96,26,.10); }
+    .price-card--featured:hover { border-color: rgba(201,96,26,.75); }
+    .price-card--featured::before { content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg); background: linear-gradient(135deg, rgba(201,96,26,.18), transparent 60%); pointer-events: none; z-index: 0; }
+    .price-card > * { position: relative; z-index: 1; }
+    .price-card-badge { font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white); background: var(--amber); padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 1.4rem; }
+    .price-card-badge--group { background: rgba(212,169,106,.20); color: var(--gold); border: 1px solid rgba(212,169,106,.30); }
+    .price-card-icon { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 1rem; }
+    .price-card--featured .price-card-icon { background: rgba(201,96,26,.25); color: var(--amber-light); }
+    .price-card--group .price-card-icon { background: rgba(212,169,106,.12); color: var(--gold); }
+    .price-card-title { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 0.5rem; }
+    .price-amount { font-family: var(--font-display); line-height: 1; font-weight: 700; margin-bottom: 0.3rem; }
+    .price-amount .currency { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 400; vertical-align: super; background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .price-amount .figure { font-size: clamp(3.2rem, 8vw, 5rem); background: linear-gradient(135deg, var(--white) 30%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .price-per { font-size: 0.8rem; color: rgba(255,255,255,.40); margin-bottom: 1.8rem; letter-spacing: 0.04em; }
+    .price-group-size { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 1.6rem; }
+    .price-group-dot { width: 28px; height: 28px; border-radius: 50%; background: rgba(212,169,106,.15); border: 1px solid rgba(212,169,106,.25); display: grid; place-items: center; font-size: 0.65rem; color: var(--gold); }
+    .price-group-dot.filled { background: rgba(212,169,106,.30); border-color: rgba(212,169,106,.55); }
+    .price-includes { list-style: none; width: 100%; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 9px; }
+    .price-includes li { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: rgba(255,255,255,.70); text-align: left; }
+    .price-includes li i { color: var(--gold); font-size: 0.72rem; flex-shrink: 0; }
+    .price-saving { display: inline-flex; align-items: center; gap: 6px; background: rgba(212,169,106,.12); border: 1px solid rgba(212,169,106,.28); color: var(--gold); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; padding: 5px 13px; border-radius: var(--radius-pill); margin-bottom: 1.6rem; }
+    .pricing-discount-strip { max-width: 860px; margin: 22px auto 0; background: rgba(212,169,106,.08); border: 1px solid rgba(212,169,106,.20); border-radius: var(--radius-md); padding: 18px 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .pricing-discount-strip i { font-size: 1.1rem; color: var(--gold); flex-shrink: 0; }
+    .pricing-discount-strip p { font-size: 0.85rem; color: rgba(255,255,255,.60); margin: 0; line-height: 1.5; }
+    .pricing-discount-strip strong { color: var(--gold); font-weight: 600; }
+    .price-note { font-size: 0.78rem; color: rgba(255,255,255,.35); margin-top: 1.2rem; text-align: center; max-width: 860px; margin-inline: auto; }
+
+    /* FEATURES */
+    .features { background: var(--parchment); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 3rem; }
+    .feature-item { background: var(--white); border-radius: var(--radius-md); padding: clamp(22px, 3vw, 36px); border: 1px solid rgba(201,96,26,.08); transition: transform 0.4s var(--ease-expo), box-shadow 0.4s, border-color 0.3s, opacity 0.8s var(--ease-expo); opacity: 0; transform: translateY(24px); }
+    .feature-item.is-visible { opacity: 1; transform: none; }
+    .feature-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(201,96,26,.2); }
+    .feature-icon { width: 52px; height: 52px; background: var(--amber-glow); border-radius: var(--radius-sm); display: grid; place-items: center; font-size: 1.4rem; color: var(--amber); margin-bottom: 1.2rem; }
+    .feature-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--ink); }
+    .feature-item p { font-size: 0.9rem; color: var(--mist); margin-bottom: 0; line-height: 1.6; }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 3rem; align-items: stretch; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    .map-container { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); min-height: 380px; height: 100%; }
+    .map-container iframe { width: 100%; height: 100%; border: none; display: block; }
+    .contact-info { background: var(--parchment); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 40px); border: 1px solid rgba(201,96,26,.1); display: flex; flex-direction: column; justify-content: center; }
+    .contact-info h3 { font-size: 1.4rem; margin-bottom: 1.6rem; color: var(--ink); }
+    .address h4 { font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); margin-bottom: 0.5rem; }
+    .address p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.6rem; }
+    .contact-details { margin-bottom: 1.8rem; }
+    .contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.92rem; color: var(--ink-soft); }
+    .contact-detail i { width: 34px; height: 34px; background: var(--amber-glow); border-radius: 8px; display: grid; place-items: center; color: var(--amber); font-size: 0.85rem; flex-shrink: 0; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a { width: 44px; height: 44px; background: var(--amber); color: var(--white); border-radius: 50%; display: grid; place-items: center; font-size: 1.1rem; transition: background 0.3s, transform 0.3s var(--ease-back); }
+    .social-links a:hover { background: var(--amber-light); transform: translateY(-3px); }
+    .social-links a.fb-link { background: var(--fb-blue); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(255,255,255,.45); text-align: center; padding: 28px 0; font-size: 0.84rem; }
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.3); } 28% { transform: scale(1); } 42% { transform: scale(1.2); } 56% { transform: scale(1); } }
+    .footer-heart { display: inline-block; animation: heartbeat 1.6s ease-in-out infinite; transform-origin: center; }
+
+    /* FLOATING BUTTONS */
+    .floating-buttons {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 1000;
+    }
+    .whatsapp-float, .facebook-float {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.7rem;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.25);
+      transition: transform 0.35s var(--ease-back), box-shadow 0.3s;
+      animation: floatWA 3.5s ease-in-out infinite;
+    }
+    .whatsapp-float { background: #25D366; color: white; box-shadow: 0 6px 28px rgba(37,211,102,.45); }
+    .facebook-float { background: var(--fb-blue); color: white; box-shadow: 0 6px 28px rgba(24,119,242,.4); animation-delay: 0.4s; }
+    .whatsapp-float:hover, .facebook-float:hover { transform: scale(1.1) translateY(-3px); animation: none; }
+    @keyframes floatWA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    .section-header { max-width: 700px; }
+    .section-header.centered { margin-inline: auto; text-align: center; }
+    .section-header.centered .title-rule { margin-inline: auto; }
+
+    [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo); transition-delay: var(--reveal-delay, 0s); }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 500px) {
+      .hero-meta { gap: 7px; }
+      .hero-pill { font-size: 0.75rem; padding: 6px 12px; }
+      .hero h1 { font-size: 2.2rem; }
+      .stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .stat-number { font-size: 1.7rem; }
+      .section-title-row { gap: 8px; }
+      .section-title-row .rotating-svg { width: 40px; height: 40px; }
+    }
+
+    .instagram-banner { position: relative; overflow: hidden; padding: clamp(4rem, 8vw, 7rem) 1.5rem; text-align: center; background: linear-gradient(135deg, #1e1225 0%, #2e0e1a 50%, #1a0c0c 100%); font-family: var(--font-body); }
+    .instagram-banner::before { content: ''; position: absolute; inset: -30%; background: radial-gradient(circle at 20% 30%, rgba(193,53,132, 0.45) 0%, transparent 40%), radial-gradient(circle at 80% 20%, rgba(150,47,191, 0.40) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(64,93,230, 0.40) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(254,218,117, 0.25) 0%, transparent 40%); pointer-events: none; animation: ambientGlow 15s ease-in-out infinite alternate; z-index: 0; }
+    @keyframes ambientGlow { 0% { transform: scale(1) translate(0%, 0%) rotate(0deg); opacity: 0.7; } 33% { transform: scale(1.2) translate(-5%, 5%) rotate(5deg); opacity: 0.9; } 66% { transform: scale(1.1) translate(5%, -5%) rotate(-5deg); opacity: 1; } 100% { transform: scale(1.15) translate(-3%, -3%) rotate(3deg); opacity: 0.8; } }
+    .instagram-banner-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .instagram-banner .label { color: #c36dab; display: block; margin-bottom: 0.75rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+    .instagram-banner h2 { color: var(--white); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; margin-bottom: 0; }
+    .instagram-banner p { color: rgba(255,255,255,0.65); margin: 1.2rem auto 2rem; max-width: 520px; font-size: 1rem; line-height: 1.65; }
+    .instagram-link { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, #833AB4, #C13584, #E1306C, #FD1D1D); color: var(--white); text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 1rem 2.2rem; border-radius: var(--radius-pill); transition: opacity 0.25s ease, transform 0.25s var(--ease-expo), box-shadow 0.25s ease; box-shadow: 0 8px 30px rgba(225,48,108,0.35); }
+    .instagram-link:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(225,48,108,0.5); }
   </style>
 </head>
 <body>
-
-  <!-- Scroll Progress Bar -->
   <div id="scroll-progress" aria-hidden="true"></div>
-
   <main>
-    <!-- ============================================================
-         HERO
-    ============================================================ -->
+    <!-- HERO -->
     <section class="hero" aria-label="Hero Section">
       <div class="hero-bg" id="heroBg"></div>
       <div class="hero-overlay"></div>
-
       <div class="hero-content">
         <p class="hero-eyebrow">An Exclusive Expedition · Limited to 4 Photographers</p>
         <h1>Cambodia Photo Tours <em>2026–2027</em></h1>
 
         <div class="hero-dates" aria-label="Tour dates by year">
           <p class="hero-dates-label"><i class="fas fa-calendar-days" aria-hidden="true"></i> Available Tour Dates</p>
-
           <div class="date-tabs" role="tablist" id="dateTabs">
             <button class="date-tab active" role="tab" aria-selected="true" data-year="2026">2026</button>
             <button class="date-tab" role="tab" aria-selected="false" data-year="2027">2027</button>
           </div>
-
           <div class="date-panels">
             <div class="date-panel active" data-year="2026" role="tabpanel">
-              <div class="date-card">
-                <span class="date-card-month">August</span>
-                <span class="date-card-range">17 – 28</span>
-                <span class="date-card-tag">12 days</span>
-              </div>
-              <div class="date-card">
-                <span class="date-card-month">November</span>
-                <span class="date-card-range">1 – 12</span>
-                <span class="date-card-tag">12 days</span>
-              </div>
+              <div class="date-card"><span class="date-card-month">August</span><span class="date-card-range">17 – 28</span><span class="date-card-tag">12 days</span></div>
+              <div class="date-card"><span class="date-card-month">November</span><span class="date-card-range">1 – 12</span><span class="date-card-tag">12 days</span></div>
+              <div class="date-card"><span class="date-card-month">November</span><span class="date-card-range">15 – 26</span><span class="date-card-tag">12 days</span></div>
             </div>
             <div class="date-panel" data-year="2027" role="tabpanel">
-              <div class="date-card">
-                <span class="date-card-month">March</span>
-                <span class="date-card-range">13 – 24</span>
-                <span class="date-card-tag">12 days</span>
-              </div>
-              <div class="date-card">
-                <span class="date-card-month">August</span>
-                <span class="date-card-range">17 – 28</span>
-                <span class="date-card-tag">12 days</span>
-              </div>
-              <div class="date-card">
-                <span class="date-card-month">November</span>
-                <span class="date-card-range">1 – 12</span>
-                <span class="date-card-tag">12 days</span>
-              </div>
+              <div class="date-card"><span class="date-card-month">March</span><span class="date-card-range">13 – 24</span><span class="date-card-tag">12 days</span></div>
+              <div class="date-card"><span class="date-card-month">August</span><span class="date-card-range">17 – 28</span><span class="date-card-tag">12 days</span></div>
+              <div class="date-card"><span class="date-card-month">November</span><span class="date-card-range">1 – 12</span><span class="date-card-tag">12 days</span></div>
+              <div class="date-card"><span class="date-card-month">November</span><span class="date-card-range">15 – 26</span><span class="date-card-tag">12 days</span></div>
             </div>
           </div>
         </div>
@@ -1522,29 +629,18 @@
           <span class="hero-pill"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6 Destinations</span>
           <span class="hero-pill"><i class="fas fa-users" aria-hidden="true"></i> Max 4 Photographers</span>
         </div>
-
         <div class="hero-actions">
-          <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn">
-            <i class="fas fa-arrow-right" aria-hidden="true"></i> Book Your Tour
-          </a>
-          <a href="#itinerary" class="btn btn-ghost">
-            <i class="fas fa-map" aria-hidden="true"></i> View Itinerary
-          </a>
+          <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Cambodia%20Photography%20Tour.%20Can%20you%20tell%20me%20more%3F" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-arrow-right" aria-hidden="true"></i> Book Your Tour</a>
+          <a href="#itinerary" class="btn btn-ghost"><i class="fas fa-map" aria-hidden="true"></i> View Itinerary</a>
         </div>
       </div>
-
-      <a href="#itinerary" class="scroll-indicator" aria-label="Scroll down">
-        <i class="fas fa-chevron-down" aria-hidden="true"></i>
-      </a>
+      <a href="#itinerary" class="scroll-indicator" aria-label="Scroll down"><i class="fas fa-chevron-down" aria-hidden="true"></i></a>
     </section>
 
-    <!-- ============================================================
-         DOUBLE SLIDESHOW
-    ============================================================ -->
+    <!-- DOUBLE SLIDESHOW (with new images) -->
     <section class="double-slideshow">
       <div class="container">
         <div class="section-header centered" data-reveal>
-          <!-- Title row with rotating SVG on the left -->
           <div class="section-title-row">
             <svg class="rotating-svg" xmlns="http://www.w3.org/2000/svg" viewBox="48 -15 96.5 97" aria-hidden="true">
               <path d="m96.2-14.4c-25.9 0-47.7 21.4-48.2 46.2-0.5 26.1 19.7 47.7 48.2 47.8 25.7 0 47.8-20.9 47.9-46.6s-20.6-47.4-47.9-47.4z" fill="none" stroke="#D4A96A" stroke-width="1.8" opacity="0.9"/>
@@ -1572,6 +668,7 @@
               <div class="mySlides"><img src="/images/cambodia_photo-tour_temples_7.webp" alt="Angkor Temple 7" loading="lazy"></div>
               <div class="mySlides"><img src="/images/cambodia_photo-tour_temples_8.webp" alt="Angkor Temple 8" loading="lazy"></div>
               <div class="mySlides"><img src="/images/cambodia_photo-tour_temples_9.webp" alt="Angkor Temple 9" loading="lazy"></div>
+              <div class="mySlides"><img src="/images/cambodia_photo-tour_temples_10.webp" alt="Angkor Temple 10" loading="lazy"></div>
             </div>
             <div class="dots" id="templesDots"></div>
           </div>
@@ -1586,6 +683,9 @@
               <div class="mySlides"><img src="/images/cambodia_photo-tour_people_5.webp" alt="Cambodian People 5" loading="lazy"></div>
               <div class="mySlides"><img src="/images/cambodia_photo-tour_people_6.webp" alt="Cambodian People 6" loading="lazy"></div>
               <div class="mySlides"><img src="/images/cambodia_photo-tour_people_7.webp" alt="Cambodian People 7" loading="lazy"></div>
+              <div class="mySlides"><img src="/images/cambodia_photo-tour_people_8.webp" alt="Cambodian People 8" loading="lazy"></div>
+              <div class="mySlides"><img src="/images/cambodia_photo-tour_people_9.webp" alt="Cambodian People 9" loading="lazy"></div>
+              <div class="mySlides"><img src="/images/cambodia_photo-tour_people_10.webp" alt="Cambodian People 10" loading="lazy"></div>
             </div>
             <div class="dots" id="peopleDots"></div>
           </div>
@@ -1593,9 +693,7 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         ITINERARY
-    ============================================================ -->
+    <!-- ITINERARY -->
     <section class="itinerary" id="itinerary">
       <div class="container">
         <div class="section-header centered" data-reveal>
@@ -1604,15 +702,12 @@
           <span class="title-rule centered"></span>
         </div>
       </div>
-      
       <div class="itinerary-map-wrap">
         <img src="/images/cambodia-photo-tour.webp" alt="Map of Cambodia Tour Itinerary">
       </div>
     </section>
 
-    <!-- ============================================================
-         GUIDE SECTION
-    ============================================================ -->
+    <!-- GUIDE SECTION -->
     <section class="guide-section">
       <div class="container">
         <div class="two-columns">
@@ -1625,27 +720,16 @@
             <span class="title-rule mb-1-6"></span>
             <p>Twelve years ago, a photo trip to Angkor changed my life; today, I call Siem Reap home. My approach has evolved from documenting the temples to capturing the soul of Cambodia through its people and culture. With over a decade of experience, I've mastered the temples' seasonal light patterns, allowing me to guide you to the perfect shot at the perfect moment.</p>
             <div class="stats">
-              <div class="stat-item">
-                <span class="stat-number">12+</span>
-                <span class="stat-label">Years Experience</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">500+</span>
-                <span class="stat-label">Workshops Led</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">5/5</span>
-                <span class="stat-label">Google Maps Rating</span>
-              </div>
+              <div class="stat-item"><span class="stat-number">12+</span><span class="stat-label">Years Experience</span></div>
+              <div class="stat-item"><span class="stat-number">500+</span><span class="stat-label">Workshops Led</span></div>
+              <div class="stat-item"><span class="stat-number">5/5</span><span class="stat-label">Google Maps Rating</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         ABOUT
-    ============================================================ -->
+    <!-- ABOUT -->
     <section class="about" id="about">
       <div class="container">
         <div class="about-inner">
@@ -1667,75 +751,48 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         PRICING
-    ============================================================ -->
+    <!-- PRICING -->
     <section class="pricing" id="pricing">
       <div class="container">
         <div class="pricing-header" data-reveal>
           <span class="section-label">Investment</span>
           <h2 class="section-title">Ready to Capture Cambodia?</h2>
-          <div class="spots-badge">
-            <i class="fas fa-fire" aria-hidden="true"></i>
-            Only 4 spots per departure — book early to secure yours
-          </div>
+          <div class="spots-badge"><i class="fas fa-fire" aria-hidden="true"></i> Only 4 spots per departure — book early to secure yours</div>
         </div>
-
         <div class="pricing-grid" data-reveal style="--reveal-delay: .1s">
           <div class="price-card price-card--featured">
             <span class="price-card-badge">Solo Traveller</span>
             <div class="price-card-icon"><i class="fas fa-user" aria-hidden="true"></i></div>
             <p class="price-card-title">Private Expedition</p>
-            <div class="price-amount">
-              <span class="currency">USD</span><span class="figure">5,500</span>
-            </div>
+            <div class="price-amount"><span class="currency">USD</span><span class="figure">5,500</span></div>
             <p class="price-per">per photographer · all-inclusive</p>
-            <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn btn-block">
-              <i class="fas fa-arrow-right" aria-hidden="true"></i> Book Solo
-            </a>
+            <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Solo%20Tour" target="_blank" rel="noopener noreferrer" class="btn btn-block"><i class="fas fa-arrow-right" aria-hidden="true"></i> Book Solo</a>
           </div>
-
           <div class="price-card price-card--group">
             <span class="price-card-badge price-card-badge--group">Small Group</span>
             <div class="price-card-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
             <p class="price-card-title">2 – 4 Photographers</p>
-            <div class="price-amount">
-              <span class="currency">USD</span><span class="figure">4,700</span>
-            </div>
+            <div class="price-amount"><span class="currency">USD</span><span class="figure">4,700</span></div>
             <p class="price-per">per photographer · all-inclusive</p>
-
             <div class="price-group-size" aria-label="2 to 4 people">
               <div class="price-group-dot filled"><i class="fas fa-user" aria-hidden="true"></i></div>
               <div class="price-group-dot filled"><i class="fas fa-user" aria-hidden="true"></i></div>
               <div class="price-group-dot"><i class="fas fa-user" aria-hidden="true"></i></div>
               <div class="price-group-dot"><i class="fas fa-user" aria-hidden="true"></i></div>
             </div>
-
             <span class="price-saving"><i class="fas fa-tag" aria-hidden="true"></i> Save USD 800 vs. solo rate</span>
-
-            <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-block btn-ghost-gold">
-              <i class="fas fa-arrow-right" aria-hidden="true"></i> Book as Group
-            </a>
+            <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Group%20Tour" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-block btn-ghost-gold"><i class="fas fa-arrow-right" aria-hidden="true"></i> Book as Group</a>
           </div>
         </div>
-
         <div class="pricing-discount-strip" data-reveal style="--reveal-delay: .2s">
           <i class="fas fa-gift" aria-hidden="true"></i>
-          <p>
-            <strong>Special discounts available</strong> for accompanying travellers (non-photographers)
-            and for returning participants from previous photo tours. Contact us to learn more.
-          </p>
+          <p><strong>Special discounts available</strong> for accompanying travellers (non-photographers) and for returning participants.</p>
         </div>
-
-        <p class="price-note" data-reveal style="--reveal-delay: .25s">
-          30% deposit secures your spot &nbsp;·&nbsp; Full refund if cancelled 3 months before departure
-        </p>
+        <p class="price-note" data-reveal style="--reveal-delay: .25s">30% deposit secures your spot · Full refund if cancelled 3 months before departure</p>
       </div>
     </section>
 
-    <!-- ============================================================
-         FEATURES
-    ============================================================ -->
+    <!-- FEATURES -->
     <section class="features">
       <div class="container">
         <div class="section-header centered" data-reveal>
@@ -1743,35 +800,16 @@
           <h2 class="section-title">Why This Cambodia Photo Tour is Different</h2>
           <span class="title-rule centered"></span>
         </div>
-
         <div class="features-grid">
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fas fa-monument" aria-hidden="true"></i></div>
-            <h3>Iconic Temples</h3>
-            <p>Capture Angkor Wat at sunrise and hidden temple gems</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fas fa-people-group" aria-hidden="true"></i></div>
-            <h3>Local Culture</h3>
-            <p>Photograph vibrant markets and authentic Khmer life</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fas fa-sun" aria-hidden="true"></i></div>
-            <h3>Golden Hour Magic</h3>
-            <p>Perfect timing for magical lighting</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fas fa-camera" aria-hidden="true"></i></div>
-            <h3>Expert Guidance</h3>
-            <p>Professional guide with 12+ years experience</p>
-          </div>
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-monument" aria-hidden="true"></i></div><h3>Iconic Temples</h3><p>Capture Angkor Wat at sunrise and hidden temple gems</p></div>
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-people-group" aria-hidden="true"></i></div><h3>Local Culture</h3><p>Photograph vibrant markets and authentic Khmer life</p></div>
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-sun" aria-hidden="true"></i></div><h3>Golden Hour Magic</h3><p>Perfect timing for magical lighting</p></div>
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-camera" aria-hidden="true"></i></div><h3>Expert Guidance</h3><p>Professional guide with 12+ years experience</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         CONTACT
-    ============================================================ -->
+    <!-- CONTACT -->
     <section class="contact" id="contact">
       <div class="container">
         <div class="section-header" data-reveal>
@@ -1779,7 +817,6 @@
           <h2 class="section-title">Find Us</h2>
           <span class="title-rule"></span>
         </div>
-
         <div class="contact-grid">
           <div class="map-container" data-reveal style="--reveal-delay: .1s">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3881.9066280562024!2d103.84021737321761!3d13.356081706336065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3110174364e25ba9%3A0xd9b10c9fcba0b10a!2sAngkor+Photography+Tours!5e0!3m2!1sen!2skh!4v1756716116244!5m2!1sen!2skh" allowfullscreen="" loading="lazy" title="Angkor Photography Tours location"></iframe>
@@ -1791,13 +828,10 @@
               <p>Sok San Road, Sangkat Svay Dangkum<br>Siem Reap District, Siem Reap Province 17252<br>Cambodia</p>
             </address>
             <div class="contact-details">
-              <div class="contact-detail">
-                <i class="fas fa-phone" aria-hidden="true"></i>
-                <span>+855(0) 15 720 655</span>
-              </div>
+              <div class="contact-detail"><i class="fas fa-phone" aria-hidden="true"></i><span>+855(0) 15 720 655</span></div>
             </div>
             <div class="social-links">
-              <a href="https://www.facebook.com/angkorphotographytours" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/angkorphotographytours" target="_blank" rel="noopener noreferrer" class="fb-link" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
               <a href="https://www.instagram.com/angkorphototours" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
             </div>
           </div>
@@ -1805,20 +839,13 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         INSTAGRAM BANNER
-    ============================================================ -->
+    <!-- INSTAGRAM BANNER -->
     <section class="instagram-banner">
       <div class="instagram-banner-content">
         <span class="label">Stay Inspired</span>
         <h2>Follow Our Instagram</h2>
-        <p>
-          Follow our Instagram to see stunning photos from our recent photography tours across Cambodia.
-          Get inspired to join our next photo tour!
-        </p>
-        <a href="https://www.instagram.com/angkorphototours" target="_blank" rel="noopener noreferrer" class="instagram-link">
-          <i class="fab fa-instagram" aria-hidden="true"></i> Follow us on Instagram
-        </a>
+        <p>Follow our Instagram to see stunning photos from our recent photography tours across Cambodia. Get inspired to join our next photo tour!</p>
+        <a href="https://www.instagram.com/angkorphototours" target="_blank" rel="noopener noreferrer" class="instagram-link"><i class="fab fa-instagram" aria-hidden="true"></i> Follow us on Instagram</a>
       </div>
     </section>
   </main>
@@ -1829,52 +856,40 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Cambodia%20Photography%20Tour%202026.%20Can%20you%20tell%20me%20more%3F" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-  </a>
+  <!-- Floating buttons -->
+  <div class="floating-buttons">
+    <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Cambodia%20Photography%20Tour" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/angkorphotographytours" target="_blank" rel="noopener noreferrer" class="facebook-float" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+  </div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     (function() {
       'use strict';
-
-      /* ─── Scroll Progress Bar ─────────────────────────── */
       const progressBar = document.getElementById('scroll-progress');
-      const startColor = { r: 201, g: 96, b: 26 }; 
-      const endColor = { r: 28, g: 23, b: 20 };   
+      const startColor = { r: 201, g: 96, b: 26 };
+      const endColor = { r: 28, g: 23, b: 20 };
       let ticking = false;
-
       function updateProgress() {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollTop = window.scrollY;
         const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
-        
         progressBar.style.width = (progress * 100) + '%';
-        
         const r = Math.round(startColor.r + (endColor.r - startColor.r) * progress);
         const g = Math.round(startColor.g + (endColor.g - startColor.g) * progress);
         const b = Math.round(startColor.b + (endColor.b - startColor.b) * progress);
-        
         progressBar.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        
         ticking = false;
       }
-
       window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateProgress);
-          ticking = true;
-        }
+        if (!ticking) { window.requestAnimationFrame(updateProgress); ticking = true; }
       }, { passive: true });
-      
       updateProgress();
 
-      /* ─── Scroll-reveal utility ──────────────────────── */
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const target = entry.target;
-            
             if (target.classList.contains('feature-item')) {
               const items = Array.from(target.parentElement.children);
               const index = items.indexOf(target);
@@ -1882,24 +897,17 @@
             } else {
               target.classList.add('is-visible');
             }
-            
             revealObserver.unobserve(target);
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('[data-reveal], .feature-item, .itinerary-map-wrap img, .guide-image img').forEach(el => revealObserver.observe(el));
 
-      document.querySelectorAll('[data-reveal], .feature-item, .itinerary-map-wrap img, .guide-image img').forEach(el => {
-        revealObserver.observe(el);
-      });
-
-      /* ─── Double slideshow logic ─────────────────────── */
       const initSlideshow = (container, dotsEl, interval) => {
         const slides = container.querySelectorAll('.mySlides');
         if (!slides.length) return;
-
         let current = 0;
         let timer;
-
         slides.forEach((_, i) => {
           const dot = document.createElement('button');
           dot.className = 'dot' + (i === 0 ? ' active-dot' : '');
@@ -1907,51 +915,34 @@
           dot.addEventListener('click', () => goTo(i, true));
           dotsEl.appendChild(dot);
         });
-
         const dots = dotsEl.querySelectorAll('.dot');
         slides[0].classList.add('is-active');
-
         function goTo(idx, reset) {
           slides[current].classList.remove('is-active');
           dots[current].classList.remove('active-dot');
-          
           current = (idx + slides.length) % slides.length;
-          
           slides[current].classList.add('is-active');
           dots[current].classList.add('active-dot');
-          
-          if (reset) {
-            clearInterval(timer);
-            timer = setInterval(() => goTo(current + 1), interval);
-          }
+          if (reset) { clearInterval(timer); timer = setInterval(() => goTo(current + 1), interval); }
         }
-
         timer = setInterval(() => goTo(current + 1), interval);
       };
-
       initSlideshow(document.getElementById('templesSlideshow'), document.getElementById('templesDots'), 5000);
       initSlideshow(document.getElementById('peopleSlideshow'), document.getElementById('peopleDots'), 5000);
 
-      /* ─── Hero date tabs ─────────────────────────── */
       const tabContainer = document.getElementById('dateTabs');
       if (tabContainer) {
         tabContainer.addEventListener('click', (e) => {
           const tab = e.target.closest('.date-tab');
           if (!tab) return;
-
           const year = tab.dataset.year;
-          
           document.querySelectorAll('.date-tab').forEach(t => {
             t.classList.toggle('active', t === tab);
             t.setAttribute('aria-selected', t === tab);
           });
-          
-          document.querySelectorAll('.date-panel').forEach(p => {
-            p.classList.toggle('active', p.dataset.year === year);
-          });
+          document.querySelectorAll('.date-panel').forEach(p => p.classList.toggle('active', p.dataset.year === year));
         });
       }
-
     })();
   </script>
 </body>
