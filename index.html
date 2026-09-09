@@ -441,11 +441,12 @@
     .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
     @media (max-width: 768px) { .two-columns { grid-template-columns: 1fr; } }
     .guide-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4/5; position: relative; }
-    .guide-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.2) translateX(-8%); }
+    .guide-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.2) translateX(8%); }  /* start right */
     .guide-image img.is-visible { animation: panGuide 16s ease-in-out infinite alternate; }
+    /* pan from right to left */
     @keyframes panGuide {
-      0%   { transform: scale(1.25) translateX(-6%); }
-      100% { transform: scale(1.25) translateX(4%); }
+      0%   { transform: scale(1.25) translateX(6%); }  /* right side */
+      100% { transform: scale(1.25) translateX(-4%); } /* left side */
     }
     .guide-image::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); pointer-events: none; }
     .guide-text { position: relative; z-index: 1; }
@@ -612,7 +613,6 @@
           </div>
           <div class="date-panels">
             <div class="date-panel active" data-year="2026" role="tabpanel">
-              <!-- August 17-28 removed as requested -->
               <div class="date-card"><span class="date-card-month">November</span><span class="date-card-range">1 – 12</span><span class="date-card-tag">12 days</span></div>
               <div class="date-card"><span class="date-card-month">November</span><span class="date-card-range">15 – 26</span><span class="date-card-tag">12 days</span></div>
             </div>
