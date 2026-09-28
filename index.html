@@ -1150,6 +1150,38 @@
         }
 
         /* ============================================================
+           MESSENGER FLOAT
+        ============================================================ */
+        .messenger-float {
+            position: fixed;
+            bottom: 100px;
+            right: 28px;
+            width: 60px;
+            height: 60px;
+            background: #0084FF;
+            color: var(--white);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 28px rgba(0,132,255,.45);
+            z-index: 1000;
+            transition: transform 0.35s var(--ease-back), box-shadow 0.3s;
+            animation: floatMessenger 3.5s ease-in-out infinite;
+        }
+
+        .messenger-float:hover {
+            transform: scale(1.12) translateY(-4px);
+            box-shadow: 0 10px 36px rgba(0,132,255,.55);
+            animation: none;
+        }
+
+        @keyframes floatMessenger {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+
+        /* ============================================================
            SECTION HEADER HELPER
         ============================================================ */
         .section-header {
@@ -1393,16 +1425,6 @@
             line-height: 1.1;
         }
 
-        .date-card-tag {
-            font-family: var(--font-body);
-            font-size: 0.6rem;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
-            margin-top: 2px;
-        }
-
         /* ── hero-meta: now only 2 pills, keep centred ── */
         .hero-meta {
             margin-bottom: 2.4rem;
@@ -1441,35 +1463,34 @@
                 </div>
 
                 <div class="date-panels">
-                    <!-- 2026 -->
+                    <!-- 2026 — November 1–12 and 15–26 (no year tag) -->
                     <div class="date-panel active" data-year="2026" role="tabpanel">
-                        <div class="date-card">
-                            <span class="date-card-month">August</span>
-                            <span class="date-card-range">17 – 28</span>
-                            <span class="date-card-tag">12 days</span>
-                        </div>
                         <div class="date-card">
                             <span class="date-card-month">November</span>
                             <span class="date-card-range">1 – 12</span>
-                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">November</span>
+                            <span class="date-card-range">15 – 26</span>
                         </div>
                     </div>
-                    <!-- 2027 -->
+                    <!-- 2027 — March, August, November (1–12 & 15–26) (no year tag) -->
                     <div class="date-panel" data-year="2027" role="tabpanel">
                         <div class="date-card">
                             <span class="date-card-month">March</span>
                             <span class="date-card-range">13 – 24</span>
-                            <span class="date-card-tag">12 days</span>
                         </div>
                         <div class="date-card">
                             <span class="date-card-month">August</span>
                             <span class="date-card-range">17 – 28</span>
-                            <span class="date-card-tag">12 days</span>
                         </div>
                         <div class="date-card">
                             <span class="date-card-month">November</span>
                             <span class="date-card-range">1 – 12</span>
-                            <span class="date-card-tag">12 days</span>
+                        </div>
+                        <div class="date-card">
+                            <span class="date-card-month">November</span>
+                            <span class="date-card-range">15 – 26</span>
                         </div>
                     </div>
                 </div>
@@ -1482,8 +1503,9 @@
             </div>
 
             <div class="hero-actions">
-                <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn">
-                    <i class="fas fa-arrow-right"></i> Book Your Tour
+                <!-- Removed outbound angkorphotographytours.com link — replaced with WhatsApp -->
+                <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Cambodia%20Photography%20Tour.%20Can%20you%20tell%20me%20more%3F" target="_blank" rel="noopener" class="btn">
+                    <i class="fab fa-whatsapp"></i> Book via WhatsApp
                 </a>
                 <a href="#itinerary" class="btn btn-ghost">
                     <i class="fas fa-map"></i> View Itinerary
@@ -1645,8 +1667,9 @@
                         <span class="currency">USD</span><span class="figure">5,500</span>
                     </div>
                     <p class="price-per">per photographer · all-inclusive</p>
-                    <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn" style="width:100%;justify-content:center;">
-                        <i class="fas fa-arrow-right"></i> Book Solo
+                    <!-- Replaced outbound link with WhatsApp -->
+                    <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Solo%20Cambodia%20Photography%20Tour.%20Can%20you%20tell%20me%20more%3F" target="_blank" rel="noopener" class="btn" style="width:100%;justify-content:center;">
+                        <i class="fab fa-whatsapp"></i> Book Solo via WhatsApp
                     </a>
                 </div>
 
@@ -1670,8 +1693,9 @@
 
                     <span class="price-saving"><i class="fas fa-tag"></i> Save USD 800 vs. solo rate</span>
 
-                    <a href="https://www.angkorphotographytours.com/cambodia-photography-tour/" target="_blank" class="btn btn-ghost" style="width:100%;justify-content:center;border-color:rgba(212,169,106,.45);color:var(--gold);">
-                        <i class="fas fa-arrow-right"></i> Book as Group
+                    <!-- Replaced outbound link with Messenger -->
+                    <a href="https://m.me/angkorphotographytours" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center;border-color:rgba(212,169,106,.45);color:var(--gold);">
+                        <i class="fab fa-facebook-messenger"></i> Book as Group
                     </a>
                 </div>
 
@@ -1788,8 +1812,14 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Cambodia%20Photography%20Tour%202026.%20Can%20you%20tell%20me%20more%3F" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <!-- WhatsApp floating button -->
+    <a href="https://wa.me/85515720655?text=Hi!%20I'm%20interested%20in%20the%20Cambodia%20Photography%20Tour.%20Can%20you%20tell%20me%20more%3F" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Messenger floating button -->
+    <a href="https://m.me/angkorphotographytours" target="_blank" rel="noopener" class="messenger-float" aria-label="Chat on Messenger">
+        <i class="fab fa-facebook-messenger"></i>
     </a>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
